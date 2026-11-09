@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Properties – EstateX Portal</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=8.0">
+</head>
+<body><!-- Navigation Bar -->
+  <header>
+    <nav class="public-navbar" aria-label="Main Navigation">
+      <div class="nav-container">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="properties.html" class="nav-link active">Properties</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <!-- Profile dropdown with icon -->
+          <div class="profile-dropdown-wrapper">
+            <button class="profile-icon-btn" aria-label="User Account Menu" title="User Account">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </button>
+            <div class="profile-dropdown-menu">
+              <div class="profile-dropdown-header">
+                <div class="user-name">Welcome to EstateX</div>
+                <div class="user-role">Account Access</div>
+              </div>
+              <a href="login.html">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                Sign In
+              </a>
+              <a href="register.html">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                Create Account
+              </a>
+            </div>
+          </div>
+          <a href="login.html" class="btn btn-outline" style="color: var(--primary-light); border-color: rgba(255,237,216,0.2);">Sign In</a>
+          <a href="register.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main style="max-width: var(--max-content-width); margin: 40px auto; padding: 0 32px; width: 100%;">
+    <!-- Page Header -->
+    <div style="margin-bottom: 32px;">
+      <span style="color: var(--accent-dark); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Verified Inventory</span>
+      <h1 style="margin-top: 6px;">Browse Properties</h1>
+      <p>Explore premium residential & commercial real estate listings across Sri Lanka.</p>
+    </div>
+
+    <!-- Search & Filter Area (per requirement Section 6) -->
+    <div class="toolbar-container">
+      <div class="toolbar-filters" style="width: 100%; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 14px;">
+        <!-- Search by location -->
+        <div>
+          <label class="form-label" style="font-size: 0.75rem;">Location / Keywords</label>
+          <input type="text" id="publicSearchInput" class="form-control" placeholder="Search by city, title, or address...">
+        </div>
+
+        <!-- Property Type -->
+        <div>
+          <label class="form-label" style="font-size: 0.75rem;">Property Type</label>
+          <select id="publicTypeFilter" class="form-control">
+            <option value="">All Types</option>
+            <option value="villa">Luxury Villa</option>
+            <option value="apartment">Apartment</option>
+            <option value="penthouse">Penthouse</option>
+            <option value="house">Single Family House</option>
+            <option value="commercial">Commercial Space</option>
+            <option value="land">Land / Plot</option>
+          </select>
+        </div>
+
+        <!-- Rent / Sale -->
+        <div>
+          <label class="form-label" style="font-size: 0.75rem;">Listing Type</label>
+          <select id="publicListingTypeFilter" class="form-control">
+            <option value="">Any Status</option>
+            <option value="sale">For Sale</option>
+            <option value="rent">For Rent</option>
+          </select>
+        </div>
+
+        <!-- Price Range -->
+        <div>
+          <label class="form-label" style="font-size: 0.75rem;">Price Range</label>
+          <select id="publicPriceRangeFilter" class="form-control">
+            <option value="">All Budgets</option>
+            <option value="1">Under LKR 30M</option>
+            <option value="2">LKR 30M - 80M</option>
+            <option value="3">LKR 80M - 150M</option>
+            <option value="4">LKR 150M+</option>
+          </select>
+        </div>
+
+        <!-- Search Button -->
+        <div style="display: flex; align-items: flex-end;">
+          <button type="button" id="publicSearchBtn" class="btn btn-primary" style="height: 42px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Filter Badges & Count -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+      <div id="publicPropertyCount" style="font-size: 0.9rem; font-weight: 600; color: var(--primary-dark);">
+        Showing Properties
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Sort By:</span>
+        <select id="publicSortBy" class="filter-select">
+          <option value="newest">Newest Added</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Property Cards -->
+    <div class="property-grid" id="publicPropertyGrid">
+      <div style="grid-column: 1 / -1; text-align: center; padding: 48px; color: var(--text-muted);">
+        Loading properties from catalog...
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-wrapper">
+      <div id="publicPaginationText" style="font-size: 0.85rem; color: var(--text-muted);">
+        Showing 0 items
+      </div>
+      <div class="pagination-pages" id="publicPaginationPages">
+        <button class="page-btn active">1</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="public-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+        <p>Find your perfect property with EstateX. The leading real estate portal connecting buyers, tenants, certified agents, and property managers.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="#" class="social-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg></a>
+          <a href="#" class="social-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="../user/profile.html">Profile</a></li>
+          <li><a href="../user/bookings.html">My Bookings</a></li>
+          <li><a href="../user/reviews.html">My Reviews</a></li>
+          <li><a href="login.html">Logout</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <div class="contact-info-list">
+          <div class="contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info@estatex.lk</span>
+          </div>
+          <div class="contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>+94 11 234 5678</span>
+          </div>
+          <div class="contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Level 12, West Tower, World Trade Center, Colombo 01</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <div>&copy; 2026 EstateX. All rights reserved.</div>
+        <div>EstateX Real Estate Management System</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    const API_BASE_URL = window.API_BASE_URL || (window.location.port === '8081' ? '' : 'http://localhost:8081');
+    let publicProperties = [];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadPublicProperties();
+
+      const searchInput = document.getElementById('publicSearchInput');
+      const typeFilter = document.getElementById('publicTypeFilter');
+      const listingTypeFilter = document.getElementById('publicListingTypeFilter');
+      const priceFilter = document.getElementById('publicPriceRangeFilter');
+      const sortBy = document.getElementById('publicSortBy');
+      const searchBtn = document.getElementById('publicSearchBtn');
+
+      if (searchInput) searchInput.addEventListener('input', applyPublicFilters);
+      if (typeFilter) typeFilter.addEventListener('change', applyPublicFilters);
+      if (listingTypeFilter) listingTypeFilter.addEventListener('change', applyPublicFilters);
+      if (priceFilter) priceFilter.addEventListener('change', applyPublicFilters);
+      if (sortBy) sortBy.addEventListener('change', applyPublicFilters);
+      if (searchBtn) searchBtn.addEventListener('click', applyPublicFilters);
+    });
+
+    async function loadPublicProperties() {
+      const grid = document.getElementById('publicPropertyGrid');
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/properties`);
+        if (res.ok) {
+          const data = await res.json();
+          publicProperties = Array.isArray(data) ? data : [];
+          // Pre-cache individual properties in sessionStorage and localStorage for instant detail pages
+          publicProperties.forEach(p => {
+            try {
+              sessionStorage.setItem('estatex_prop_' + p.id, JSON.stringify(p));
+              localStorage.setItem('estatex_prop_' + p.id, JSON.stringify(p));
+            } catch (e) {}
+          });
+          applyPublicFilters();
+        } else {
+          grid.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 48px; color: var(--delete-dark-red);">Failed to retrieve properties from server.</div>`;
+        }
+      } catch (err) {
+        console.error('Backend unavailable, error:', err);
+        grid.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 48px; color: var(--text-muted);">Could not connect to backend server.</div>`;
+      }
+    }
+
+    function cachePropertyForDetail(id) {
+      if (!publicProperties) return;
+      const p = publicProperties.find(x => String(x.id) === String(id));
+      if (p) {
+        try {
+          sessionStorage.setItem('estatex_prop_' + id, JSON.stringify(p));
+          localStorage.setItem('estatex_prop_' + id, JSON.stringify(p));
+        } catch (e) {}
+      }
+    }
+
+    function applyPublicFilters() {
+      if (!publicProperties) return;
+
+      const q = (document.getElementById('publicSearchInput').value || '').trim().toLowerCase();
+      const typeVal = (document.getElementById('publicTypeFilter').value || '').trim().toLowerCase();
+      const listingVal = (document.getElementById('publicListingTypeFilter').value || '').trim().toLowerCase();
+      const priceVal = document.getElementById('publicPriceRangeFilter').value;
+      const sortVal = document.getElementById('publicSortBy').value;
+
+      let filtered = publicProperties.filter(p => {
+        const matchesQuery = !q ||
+          (p.title && p.title.toLowerCase().includes(q)) ||
+          (p.location && p.location.toLowerCase().includes(q)) ||
+          (p.address && p.address.toLowerCase().includes(q));
+
+        const propType = (p.propertyType || '').toLowerCase();
+        const matchesType = !typeVal || propType.includes(typeVal);
+
+        const propListing = (p.listingType || '').toLowerCase();
+        const matchesListing = !listingVal || propListing === listingVal;
+
+        let matchesPrice = true;
+        const price = Number(p.price) || 0;
+        if (priceVal === '1') matchesPrice = price < 30000000;
+        else if (priceVal === '2') matchesPrice = price >= 30000000 && price <= 80000000;
+        else if (priceVal === '3') matchesPrice = price > 80000000 && price <= 150000000;
+        else if (priceVal === '4') matchesPrice = price > 150000000;
+
+        return matchesQuery && matchesType && matchesListing && matchesPrice;
+      });
+
+      // Sort
+      if (sortVal === 'price-asc') {
+        filtered.sort((a, b) => (a.price || 0) - (b.price || 0));
+      } else if (sortVal === 'price-desc') {
+        filtered.sort((a, b) => (b.price || 0) - (a.price || 0));
+      } else {
+        filtered.sort((a, b) => (b.id || 0) - (a.id || 0));
+      }
+
+      renderPublicGrid(filtered);
+    }
+
+    function renderPublicGrid(list) {
+      const grid = document.getElementById('publicPropertyGrid');
+      const counter = document.getElementById('publicPropertyCount');
+
+      if (counter) {
+        counter.innerHTML = `Showing <strong>${list.length}</strong> Propert${list.length === 1 ? 'y' : 'ies'}`;
+      }
+
+      if (list.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 48px; color: var(--text-muted);">No properties match your search criteria.</div>`;
+        return;
+      }
+
+      grid.innerHTML = list.map(p => {
+        const imgSrc = p.primaryImage || (p.images && p.images.length > 0 ? p.images[0] : 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80');
+        const priceText = p.listingType === 'rent'
+          ? `LKR ${Number(p.price || 0).toLocaleString()} <span>/ Month</span>`
+          : `LKR ${Number(p.price || 0).toLocaleString()} <span>/ Total</span>`;
+        const listingTag = p.listingType === 'rent' ? 'For Rent' : 'For Sale';
+
+        return `
+          <article class="property-card">
+            <div class="property-image-container">
+              <img src="${imgSrc}" alt="${escapeHtml(p.title)}" style="height: 220px; object-fit: cover;">
+              <span class="property-badge-type">${escapeHtml(p.propertyType || 'House')}</span>
+              <span class="property-badge-status">${listingTag}</span>
+            </div>
+            <div class="property-content">
+              <div class="property-price">${priceText}</div>
+              <h3 class="property-title">${escapeHtml(p.title)}</h3>
+              <div class="property-location">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                ${escapeHtml(p.location || p.address || '')}
+              </div>
+              <div class="property-features">
+                <div class="property-feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 20v-8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8"></path><path d="M5 10V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"></path></svg>
+                  ${p.bedrooms || 0} Beds
+                </div>
+                <div class="property-feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"></path><path d="M6 12V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v7"></path></svg>
+                  ${p.bathrooms || 0} Baths
+                </div>
+                <div class="property-feature-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect></svg>
+                  ${Number(p.floorAreaSqft || 0).toLocaleString()} sqft
+                </div>
+              </div>
+              <div class="property-card-actions">
+                <a href="property-details.html?id=${p.id}" class="btn btn-outline" onclick="cachePropertyForDetail('${p.id}')">View Details</a>
+                <button type="button" class="btn btn-primary" onclick="handleListingsBookingClick('${p.id}')">Book Viewing</button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function handleListingsBookingClick(propId) {
+      const user = getAuthUser();
+      const target = `../user/bookings.html?propertyId=${encodeURIComponent(propId)}`;
+      if (!user) {
+        try {
+          sessionStorage.setItem('estatex_redirect_url', target);
+        } catch (e) {}
+        window.location.href = `login.html?redirect=${encodeURIComponent(target)}&reason=booking`;
+        return;
+      }
+      window.location.href = target;
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+  </script>
+</body>
+</html>

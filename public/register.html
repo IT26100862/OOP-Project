@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account – EstateX Portal</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=7.0">
+</head>
+<body style="background: var(--bg-app); min-height: 100vh; display: flex; flex-direction: column;">
+  <!-- Navbar -->
+  <header>
+    <nav class="public-navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+        <div class="nav-actions">
+          <span style="font-size: 0.85rem; color: #C8D1E0;">Already registered?</span>
+          <a href="login.html" class="btn btn-outline" style="color: var(--primary-light); border-color: rgba(255,237,216,0.3);">Sign In</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Registration Form Area -->
+  <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 24px;">
+    <div class="card" style="width: 100%; max-width: 580px; box-shadow: var(--shadow-lg); border-color: var(--border-color);">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <h2 style="font-size: 1.6rem; color: var(--primary-dark);">Create Your Account</h2>
+        <p style="margin-top: 6px; font-size: 0.9rem; color: var(--text-secondary);">
+          Register your EstateX account with a role-based username
+        </p>
+      </div>
+
+      <!-- Feedback Alert Box -->
+      <div id="regAlert" class="auth-alert" style="display: none;"></div>
+
+      <form id="estatexRegisterForm" onsubmit="handleRegistration(event)">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="reg-fname">First Name <span class="req">*</span></label>
+            <input type="text" id="reg-fname" class="form-control" placeholder="Dilshan" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-lname">Last Name <span class="req">*</span></label>
+            <input type="text" id="reg-lname" class="form-control" placeholder="Perera" required>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label class="form-label" for="reg-username">
+              Username <span class="req">*</span>
+            </label>
+            <input type="text" id="reg-username" class="form-control" placeholder="e.g. john" required autocomplete="username" oninput="updateUsernamePreview()">
+            <div id="usernamePreview" style="font-size: 0.78rem; color: var(--accent-dark); font-weight: 600; margin-top: 4px;">
+              System Username: <span id="previewValue">name@user</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email Address <span class="req">*</span></label>
+            <input type="email" id="reg-email" class="form-control" placeholder="dilshan@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-phone">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="reg-phone" class="form-control" placeholder="+94 77 123 4567" required autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label class="form-label" for="reg-password">Password <span class="req">*</span></label>
+              <span style="font-size: 0.72rem; color: var(--text-muted);">Must be unique</span>
+            </div>
+            <div class="password-input-wrapper">
+              <input type="password" id="reg-password" class="form-control" placeholder="Unique password (min 6 chars)" required autocomplete="new-password">
+              <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('reg-password', this)" title="Show/Hide Password">
+                <svg class="eye-icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <svg class="eye-icon-closed" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-confirm">Confirm Password <span class="req">*</span></label>
+            <div class="password-input-wrapper">
+              <input type="password" id="reg-confirm" class="form-control" placeholder="Re-type unique password" required autocomplete="new-password">
+              <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('reg-confirm', this)" title="Show/Hide Password">
+                <svg class="eye-icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <svg class="eye-icon-closed" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 8px; margin: 16px 0;">
+          <input type="checkbox" id="termsAgree" required style="margin-top: 4px;">
+          <label for="termsAgree" style="font-size: 0.85rem; color: var(--text-secondary); cursor: pointer;">
+            I agree to EstateX Terms of Service, Privacy Policy and verification checks.
+          </label>
+        </div>
+
+        <button type="submit" id="submitRegBtn" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 4px;">
+          Complete Registration
+        </button>
+      </form>
+
+      <div id="authDivider" class="auth-divider">
+        <span>Already have an account?</span>
+      </div>
+
+      <div id="existingAccountDiv" style="text-align: center;">
+        <a href="login.html" class="btn btn-outline" style="width: 100%; font-weight: 600;">
+          Sign In to Existing Account
+        </a>
+      </div>
+
+      <!-- Success State UI (Hidden by default) -->
+      <div id="successState" style="display: none; text-align: center; padding: 24px 0;">
+        <div style="width: 64px; height: 64px; background: rgba(39, 174, 96, 0.1); color: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <h3 style="color: var(--primary-dark); font-size: 1.4rem; margin-bottom: 8px;">Account Created!</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 24px;" id="successMsgText">Your account has been successfully created. You can now sign in.</p>
+        <a href="login.html" class="btn btn-primary btn-lg" style="width: 100%;">Proceed to Sign In</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="public-footer">
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <div>&copy; 2026 EstateX. All rights reserved.</div>
+        <div>EstateX Real Estate Management System</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const openIcon = btn.querySelector('.eye-icon-open');
+      const closedIcon = btn.querySelector('.eye-icon-closed');
+      if (input.type === 'password') {
+        input.type = 'text';
+        openIcon.style.display = 'none';
+        closedIcon.style.display = 'block';
+      } else {
+        input.type = 'password';
+        openIcon.style.display = 'block';
+        closedIcon.style.display = 'none';
+      }
+    }
+
+    // Dynamic username preview matching name@user or name@agent format
+    function updateUsernamePreview() {
+      const usernameInput = document.getElementById('reg-username');
+      const previewSpan = document.getElementById('previewValue');
+
+      let raw = usernameInput.value.trim();
+      let suffix = '@user';
+
+      if (!raw) {
+        previewSpan.textContent = 'name' + suffix;
+        return;
+      }
+
+      if (raw.endsWith('@user') || raw.endsWith('@agent') || raw.endsWith('@admin')) {
+        previewSpan.textContent = raw;
+      } else {
+        if (raw.includes('@')) {
+          raw = raw.substring(0, raw.indexOf('@'));
+        }
+        previewSpan.textContent = raw + suffix;
+      }
+    }
+
+    function showRegAlert(message, type = 'danger') {
+      const alertBox = document.getElementById('regAlert');
+      alertBox.className = 'auth-alert auth-alert-' + type;
+      alertBox.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;">
+          ${type === 'danger' ? '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>' : 
+            '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline>'}
+        </svg>
+        <span>${message}</span>
+      `;
+      alertBox.style.display = 'flex';
+    }
+
+    const API_BASE_URL = window.location.port === '8081' ? '' : 'http://localhost:8081';
+
+    async function handleRegistration(e) {
+      e.preventDefault();
+      const fname = document.getElementById('reg-fname').value.trim();
+      const lname = document.getElementById('reg-lname').value.trim();
+      let rawUsername = document.getElementById('reg-username').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const phone = document.getElementById('reg-phone').value.trim();
+      const password = document.getElementById('reg-password').value;
+      const confirmPassword = document.getElementById('reg-confirm').value;
+      const submitBtn = document.getElementById('submitRegBtn');
+
+      if (password !== confirmPassword) {
+        showRegAlert('Passwords do not match. Please re-enter identical passwords.', 'danger');
+        return;
+      }
+
+      if (password.length < 6) {
+        showRegAlert('Password must be at least 6 characters in length.', 'danger');
+        return;
+      }
+
+      // Format username with suffix
+      const suffix = '@user';
+      let formattedUsername = rawUsername;
+      if (!formattedUsername.toLowerCase().endsWith('@user') && !formattedUsername.toLowerCase().endsWith('@agent')) {
+        if (formattedUsername.includes('@')) {
+          formattedUsername = formattedUsername.substring(0, formattedUsername.indexOf('@'));
+        }
+        formattedUsername = formattedUsername + suffix;
+      }
+
+      const fullName = `${fname} ${lname}`.trim();
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Creating account...';
+
+      const payload = {
+        username: formattedUsername,
+        password: password,
+        email: email,
+        fullName: fullName,
+        phone: phone
+      };
+
+      const showSuccessUI = (usernameStr) => {
+        document.getElementById('regAlert').style.display = 'none';
+        document.getElementById('estatexRegisterForm').style.display = 'none';
+        document.getElementById('authDivider').style.display = 'none';
+        document.getElementById('existingAccountDiv').style.display = 'none';
+        
+        const successState = document.getElementById('successState');
+        successState.style.display = 'block';
+        document.getElementById('successMsgText').textContent = `Account registered as ${usernameStr}. You can now sign in.`;
+      };
+
+      try {
+        const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          showSuccessUI(formattedUsername);
+          return;
+        } else {
+          const errData = await response.json().catch(() => ({}));
+          showRegAlert(errData.message || 'Registration failed. Ensure your username and password are unique.', 'danger');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Complete Registration';
+          return;
+        }
+      } catch (err) {
+        console.error('Registration error:', err);
+        showRegAlert('Unable to connect to the server. Please try again later.', 'danger');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Complete Registration';
+        return;
+      }
+    }
+  </script>
+</body>
+</html>

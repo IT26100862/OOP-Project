@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us – EstateX</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=7.0">
+  <style>
+    .hero-section {
+      background: linear-gradient(rgba(14, 22, 39, 0.8), rgba(14, 22, 39, 0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+      padding: 120px 24px;
+      text-align: center;
+      color: var(--white);
+    }
+    .hero-section h1 {
+      color: var(--white);
+      font-size: 3.2rem;
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+    .hero-section p {
+      color: var(--bg-cream);
+      font-size: 1.25rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .contact-container {
+      max-width: var(--max-content-width);
+      margin: -60px auto 80px;
+      padding: 0 32px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 40px;
+    }
+
+    .info-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+      margin-bottom: 32px;
+    }
+
+    .contact-info-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      align-items: flex-start;
+    }
+    .contact-info-item:last-child {
+      margin-bottom: 0;
+    }
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--bg-cream-soft);
+      color: var(--accent-dark);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .faq-section {
+      margin-top: 80px;
+    }
+    
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 20px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--white);
+      color: var(--primary-dark);
+      transition: background var(--transition-fast);
+    }
+    .faq-question:hover {
+      background: var(--bg-cream-soft);
+    }
+    .faq-answer {
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      background: var(--white);
+      color: var(--text-secondary);
+      border-top: 1px solid transparent;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 20px 24px;
+      border-top-color: var(--border-light);
+    }
+    .faq-icon {
+      transition: transform 0.3s ease;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .map-placeholder {
+      margin-top: 80px;
+      height: 400px;
+      background: #e5e7eb;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      overflow: hidden;
+      position: relative;
+    }
+    .map-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+    .map-label {
+      position: absolute;
+      background: var(--primary-dark);
+      color: var(--white);
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-container {
+        margin-top: 40px;
+      }
+      .hero-section {
+        padding: 80px 24px 60px;
+      }
+    }
+  </style>
+</head>
+<body style="background: var(--bg-app); min-height: 100vh; display: flex; flex-direction: column;">
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="public-navbar" aria-label="Main Navigation">
+      <div class="nav-container">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="properties.html" class="nav-link">Properties</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact Us</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="profile-dropdown-wrapper">
+            <button class="profile-icon-btn" aria-label="User Account Menu">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </button>
+            <div class="profile-dropdown-menu">
+              <div class="profile-dropdown-header">
+                <div class="user-name">Welcome to EstateX</div>
+                <div class="user-role">Account Access</div>
+              </div>
+              <a href="login.html">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                Sign In
+              </a>
+              <a href="register.html">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                Create Account
+              </a>
+            </div>
+          </div>
+          <a href="login.html" class="btn btn-outline" style="color: var(--primary-light); border-color: rgba(255,237,216,0.2);">Sign In</a>
+          <a href="register.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main style="flex: 1;">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <h1>Contact Us</h1>
+      <p>We're Here to Help You Find Your Perfect Property.</p>
+    </section>
+
+    <div class="contact-container">
+      <div class="contact-grid">
+        <!-- Contact Information -->
+        <div>
+          <div class="info-card" id="contact-info-config">
+            <h3 style="margin-bottom: 24px; color: var(--primary-dark);">Get In Touch</h3>
+            
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <span style="display: block; font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Email</span>
+                <a href="mailto:support@estatex.lk" style="color: var(--primary-dark); font-weight: 500;">support@estatex.lk</a>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <span style="display: block; font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Phone</span>
+                <span style="color: var(--primary-dark); font-weight: 500;">+94 11 234 5678</span>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <span style="display: block; font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Location</span>
+                <span style="color: var(--primary-dark); font-weight: 500;">Colombo, Sri Lanka</span>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div>
+                <span style="display: block; font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Business Hours</span>
+                <span style="color: var(--primary-dark); font-weight: 500;">Monday–Friday, 9:00 AM–5:00 PM</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <div class="info-card" style="margin-bottom: 0;">
+            <h3 style="margin-bottom: 24px; color: var(--primary-dark);">Send a Message</h3>
+            
+            <div id="formAlert" class="auth-alert auth-alert-danger" style="display: none; margin-bottom: 20px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;">
+                <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span id="formAlertMessage"></span>
+            </div>
+
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
+              <div class="form-group" style="margin-bottom: 20px;">
+                <label class="form-label" for="contactName">Full Name <span class="req">*</span></label>
+                <input type="text" id="contactName" class="form-control" required placeholder="Enter your full name">
+              </div>
+              
+              <div class="form-group" style="margin-bottom: 20px;">
+                <label class="form-label" for="contactEmail">Email Address <span class="req">*</span></label>
+                <input type="email" id="contactEmail" class="form-control" required placeholder="Enter your email address">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 20px;">
+                <label class="form-label" for="contactSubject">Subject <span class="req">*</span></label>
+                <input type="text" id="contactSubject" class="form-control" required placeholder="What is this regarding?">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 24px;">
+                <label class="form-label" for="contactMessage">Message <span class="req">*</span></label>
+                <textarea id="contactMessage" class="form-control" rows="6" required placeholder="Write your message here..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="faq-section">
+        <div style="text-align: center; margin-bottom: 40px;">
+          <h2 style="font-size: 2rem; color: var(--primary-dark);">Frequently Asked Questions</h2>
+          <p style="color: var(--text-secondary); margin-top: 8px;">Find answers to common questions about EstateX.</p>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>How do I search for property listings?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="faq-answer">
+              <p>You can search for property listings by visiting the "Properties" page. From there, you can filter by location, property type, price range, and number of bedrooms to find exactly what you're looking for.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>How can I book a viewing?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="faq-answer">
+              <p>To book a viewing, you must first create a Customer account and sign in. Then, navigate to the specific property you are interested in and click the "Book Viewing" button. Select your preferred date and time, and the agent will confirm your appointment.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <span>How do I contact a property agent directly?</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="faq-answer">
+              <p>Each property listing displays the details of the certified agent managing it. If you are signed in, you can view their direct contact information and initiate a booking or inquiry from the property page.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Section -->
+      <div class="map-placeholder">
+        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Map of Colombo, Sri Lanka">
+        <div class="map-label">📍 Colombo, Sri Lanka</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="public-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+        <p>Find your perfect property with EstateX. The leading real estate portal connecting buyers, tenants, certified agents, and property managers.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="../user/profile.html">Profile</a></li>
+          <li><a href="../user/bookings.html">My Bookings</a></li>
+          <li><a href="../user/reviews.html">My Reviews</a></li>
+          <li><a href="login.html">Logout</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <div class="contact-info-list">
+          <div class="contact-item"><span>info@estatex.lk</span></div>
+          <div class="contact-item"><span>+94 11 234 5678</span></div>
+          <div class="contact-item"><span>Colombo 01, Sri Lanka</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <div>&copy; 2026 EstateX. All rights reserved.</div>
+        <div>EstateX Real Estate Management System</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    // FAQ Toggle logic
+    function toggleFaq(element) {
+      const item = element.parentElement;
+      item.classList.toggle('active');
+    }
+
+    // Contact Form submission logic
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const subject = document.getElementById('contactSubject').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+      
+      const alertBox = document.getElementById('formAlert');
+      const alertMessage = document.getElementById('formAlertMessage');
+
+      // Basic validation (though HTML5 'required' and 'type="email"' handle most of this)
+      if (!name || !email || !subject || !message) {
+        alertMessage.textContent = 'Please fill in all required fields.';
+        alertBox.style.display = 'flex';
+        return;
+      }
+
+      // Check for backend connection
+      // Since no backend endpoint currently exists for contact forms, show an error.
+      alertMessage.textContent = 'Thank you for your interest! Currently, the messaging service is unavailable as it is not connected to a backend endpoint. Please contact us directly via email or phone.';
+      alertBox.style.display = 'flex';
+      
+      // We explicitly do NOT show a fake success or store in localStorage as requested.
+    }
+  </script>
+</body>
+</html>

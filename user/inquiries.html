@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Inquiries – EstateX</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=7.0">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <!-- User Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+        <span class="role-badge-tag">Customer Portal</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-title">Navigation</div>
+        <a href="dashboard.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a>
+        <a href="../public/properties.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          Browse Properties
+        </a>
+        <a href="bookings.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          My Bookings
+        </a>
+        <a href="inquiries.html" class="sidebar-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          My Inquiries
+        </a>
+        <a href="reviews.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          My Reviews
+        </a>
+        <a href="financial-breakdown.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line><line x1="7" y1="15" x2="7.01" y2="15"></line><line x1="12" y1="15" x2="12.01" y2="15"></line></svg>
+          Financial Breakdown
+        </a>
+        <div class="sidebar-section-title">Account Settings</div>
+        <a href="profile.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Profile
+        </a>
+        <a href="reset-password.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          Reset Password
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="../public/login.html" class="sidebar-item sidebar-item-logout-user">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Logout
+        </a>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <div>
+            <div class="topbar-breadcrumb">Customer Portal &gt; Messages</div>
+            <h1 class="topbar-title">My Inquiries</h1>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="profile.html" class="topbar-user" title="My Profile">
+            <div class="user-avatar-circle">
+              <img id="userTopbarAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar">
+            </div>
+          </a>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Search and Filter Toolbar -->
+        <div class="toolbar-container">
+          <div class="toolbar-filters">
+            <input type="text" id="userInquirySearchInput" class="form-control" style="width: 290px;" placeholder="Search inquiry, property, agent...">
+            <select id="userInquiryStatusFilter" class="filter-select">
+              <option value="">All Statuses</option>
+              <option value="Pending">Pending</option>
+              <option value="Replied">Replied</option>
+            </select>
+          </div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            Total Inquiries: <strong id="userInquiriesCount">Loading...</strong>
+          </div>
+        </div>
+
+        <!-- Inquiries Table -->
+        <div class="card" style="padding: 0;">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Inquiry ID</th>
+                  <th>Property</th>
+                  <th>Agent</th>
+                  <th>Sent Date</th>
+                  <th>Your Message</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="userInquiriesTableBody">
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 36px; color: var(--text-muted);">
+                    Loading your property inquiries...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+      <footer class="dashboard-footer">
+        <div>&copy; 2026 EstateX Property Portal. All rights reserved.</div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal: View Inquiry Reply & Details -->
+  <div class="modal-overlay" id="viewInquiryModal">
+    <div class="modal-container" style="max-width: 620px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <h3 class="modal-title" id="modalInquiryCode">#INQ-104</h3>
+          <span id="modalInquiryBadge" class="badge badge-approved">Replied</span>
+        </div>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: 16px;">
+        <!-- Property Card -->
+        <div style="padding: 14px; background: var(--bg-app); border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+          <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 700;">Property</div>
+          <div id="modalPropertyTitle" style="font-size: 1.05rem; font-weight: 700; color: var(--primary-dark); margin-top: 4px;">-</div>
+          <div id="modalPropertySub" style="font-size: 0.85rem; color: var(--secondary); margin-top: 2px;">-</div>
+        </div>
+
+        <!-- Agent Details -->
+        <div style="padding: 12px 14px; background: var(--bg-cream-soft); border-radius: var(--radius-sm); border: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Assigned Agent</div>
+            <div id="modalAgentName" style="font-weight: 700; color: var(--primary-dark); font-size: 0.95rem;">-</div>
+          </div>
+          <div style="text-align: right;">
+            <div id="modalAgentPhone" style="font-weight: 700; color: var(--accent-dark); font-size: 0.9rem;">-</div>
+            <div id="modalAgentEmail" style="font-size: 0.8rem; color: var(--text-muted);">-</div>
+          </div>
+        </div>
+
+        <!-- Customer Inquiry Message Box -->
+        <div style="background: var(--bg-cream-soft); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+          <div id="modalInquirySentDate" style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 700; text-transform: uppercase;">YOUR INQUIRY:</div>
+          <p id="modalInquiryUserMsg" style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin: 0;"></p>
+        </div>
+
+        <!-- Agent Reply Box (Conditional) -->
+        <div id="modalReplyContainer" style="background: #F0FDF4; border: 1px solid #BBF7D0; padding: 16px; border-radius: var(--radius-sm);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <strong style="color: #166534; font-size: 0.9rem;" id="modalReplyAgentHeader">Agent Reply:</strong>
+            <span style="font-size: 0.75rem; color: #166534;" id="modalReplyTimestamp">-</span>
+          </div>
+          <p id="modalReplyText" style="font-size: 0.92rem; color: #14532D; line-height: 1.6; margin: 0;"></p>
+        </div>
+
+        <!-- Awaiting Reply Notice (Conditional) -->
+        <div id="modalPendingNotice" style="display: none; background: #FFFBEB; border: 1px solid #FDE68A; padding: 14px; border-radius: var(--radius-sm);">
+          <div style="display: flex; align-items: center; gap: 8px; color: #92400E; font-size: 0.9rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            <span>Your inquiry is awaiting response from the agent. You will receive the reply here once provided.</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: space-between;">
+        <button type="button" class="btn btn-outline" data-modal-close>Close</button>
+        <a href="bookings.html" id="modalBtnBookViewing" class="btn btn-primary">Book Viewing Appointment</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    const API_BASE_URL = window.API_BASE_URL || (window.location.port === '8081' ? '' : 'http://localhost:8081');
+
+    let allCustomerInquiries = [];
+
+    function getLoggedInUser() {
+      try {
+        const raw = sessionStorage.getItem('estatex_auth_user') || localStorage.getItem('estatex_auth_user');
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const user = getLoggedInUser();
+      if (user && user.profileImage) {
+        const avatarEl = document.getElementById('userTopbarAvatar');
+        if (avatarEl) avatarEl.src = user.profileImage;
+      }
+
+      await loadCustomerInquiries();
+
+      const searchInput = document.getElementById('userInquirySearchInput');
+      const statusFilter = document.getElementById('userInquiryStatusFilter');
+      if (searchInput) searchInput.addEventListener('input', applyFilters);
+      if (statusFilter) statusFilter.addEventListener('change', applyFilters);
+    });
+
+    async function loadCustomerInquiries() {
+      const user = getLoggedInUser();
+      const tbody = document.getElementById('userInquiriesTableBody');
+      const usernameParam = user ? (user.username || user.email) : '';
+
+      try {
+        const url = usernameParam
+          ? `${API_BASE_URL}/api/inquiries?customerUsername=${encodeURIComponent(usernameParam)}`
+          : `${API_BASE_URL}/api/inquiries`;
+
+        const res = await fetch(url);
+        if (res.ok) {
+          allCustomerInquiries = await res.json();
+          applyFilters();
+        } else {
+          tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 36px; color: var(--delete-dark-red);">Failed to retrieve your inquiries from server.</td></tr>`;
+        }
+      } catch (err) {
+        console.warn('Backend unavailable:', err);
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 36px; color: var(--text-muted);">Could not connect to backend server. Make sure Spring Boot is running on port 8081.</td></tr>`;
+      }
+    }
+
+    function applyFilters() {
+      const q = (document.getElementById('userInquirySearchInput').value || '').trim().toLowerCase();
+      const st = (document.getElementById('userInquiryStatusFilter').value || '').trim().toLowerCase();
+
+      const filtered = allCustomerInquiries.filter(inq => {
+        const matchesStatus = !st || (inq.status && inq.status.toLowerCase() === st);
+        const matchesQuery = !q ||
+          (inq.inquiryCode && inq.inquiryCode.toLowerCase().includes(q)) ||
+          (inq.propertyTitle && inq.propertyTitle.toLowerCase().includes(q)) ||
+          (inq.agentName && inq.agentName.toLowerCase().includes(q)) ||
+          (inq.message && inq.message.toLowerCase().includes(q)) ||
+          (inq.agentReply && inq.agentReply.toLowerCase().includes(q));
+        return matchesStatus && matchesQuery;
+      });
+
+      renderUserInquiriesTable(filtered);
+    }
+
+    function renderUserInquiriesTable(list) {
+      const tbody = document.getElementById('userInquiriesTableBody');
+      const counter = document.getElementById('userInquiriesCount');
+      if (counter) {
+        counter.textContent = `${list.length} Record${list.length === 1 ? '' : 's'}`;
+      }
+
+      if (!list || list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" style="text-align: center; padding: 48px; color: var(--text-muted);">
+              You have not submitted any property inquiries yet. Browse properties and click "Send Inquiry to Agent".
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = list.map(inq => {
+        const code = inq.inquiryCode || `#INQ-${inq.id}`;
+        const isReplied = (inq.status || '').toLowerCase() === 'replied';
+        const badgeClass = isReplied ? 'badge-approved' : 'badge-pending';
+        const statusLabel = isReplied ? 'Replied' : 'Pending';
+
+        const actionBtn = isReplied
+          ? `<button type="button" class="btn btn-outline btn-sm" onclick="viewUserInquiryReply(${inq.id})">View Reply</button>`
+          : `<button type="button" class="btn btn-outline btn-sm" onclick="viewUserInquiryReply(${inq.id})">Details</button>`;
+
+        return `
+          <tr>
+            <td><strong>${escapeHtml(code)}</strong></td>
+            <td>
+              <div class="table-cell-bold">${escapeHtml(inq.propertyTitle || 'Property #' + inq.propertyId)}</div>
+              ${inq.propertyLocation ? `<div class="table-cell-sub">${escapeHtml(inq.propertyLocation)}</div>` : ''}
+            </td>
+            <td>
+              <div class="table-cell-bold">${escapeHtml(inq.agentName || 'Agent')}</div>
+              ${inq.agentPhone || inq.agentEmail ? `<div class="table-cell-sub">${escapeHtml(inq.agentPhone || inq.agentEmail)}</div>` : ''}
+            </td>
+            <td>${escapeHtml(inq.sentDate || '-')}</td>
+            <td style="max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${escapeHtml(inq.message || '')}">
+              ${escapeHtml(inq.message || '')}
+            </td>
+            <td><span class="badge ${badgeClass}">${escapeHtml(statusLabel)}</span></td>
+            <td>${actionBtn}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function viewUserInquiryReply(id) {
+      const inq = allCustomerInquiries.find(x => x.id === id);
+      if (!inq) return;
+
+      const code = inq.inquiryCode || `#INQ-${inq.id}`;
+      const isReplied = (inq.status || '').toLowerCase() === 'replied';
+
+      document.getElementById('modalInquiryCode').textContent = code;
+      const badgeEl = document.getElementById('modalInquiryBadge');
+      badgeEl.className = `badge ${isReplied ? 'badge-approved' : 'badge-pending'}`;
+      badgeEl.textContent = isReplied ? 'Replied' : 'Pending';
+
+      // Property details
+      document.getElementById('modalPropertyTitle').textContent = inq.propertyTitle || ('Property #' + inq.propertyId);
+      const propSub = [
+        inq.propertyLocation || '',
+        inq.propertyPrice ? ('LKR ' + Number(inq.propertyPrice).toLocaleString()) : '',
+        inq.propertyListingType ? ('For ' + inq.propertyListingType.toUpperCase()) : ''
+      ].filter(Boolean).join(' • ');
+      document.getElementById('modalPropertySub').textContent = propSub || 'Property details';
+
+      // Agent details
+      document.getElementById('modalAgentName').textContent = inq.agentName || 'Assigned Agent';
+      document.getElementById('modalAgentPhone').textContent = inq.agentPhone || 'No phone';
+      document.getElementById('modalAgentEmail').textContent = inq.agentEmail || '';
+
+      // User Message
+      document.getElementById('modalInquirySentDate').textContent = `YOUR INQUIRY (${inq.sentDate || 'Recent'}):`;
+      document.getElementById('modalInquiryUserMsg').textContent = `"${inq.message || ''}"`;
+
+      // Reply vs Pending
+      const replyContainer = document.getElementById('modalReplyContainer');
+      const pendingNotice = document.getElementById('modalPendingNotice');
+
+      if (isReplied && inq.agentReply) {
+        replyContainer.style.display = 'block';
+        pendingNotice.style.display = 'none';
+        document.getElementById('modalReplyAgentHeader').textContent = `Agent Reply (${inq.agentName || 'Agent'}):`;
+        document.getElementById('modalReplyTimestamp').textContent = inq.repliedDate || 'Recently';
+        document.getElementById('modalReplyText').textContent = `"${inq.agentReply}"`;
+      } else {
+        replyContainer.style.display = 'none';
+        pendingNotice.style.display = 'block';
+      }
+
+      // Link viewing button to this property
+      const bookBtn = document.getElementById('modalBtnBookViewing');
+      if (bookBtn && inq.propertyId) {
+        bookBtn.href = `bookings.html?propertyId=${inq.propertyId}`;
+      }
+
+      openModal('viewInquiryModal');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+*.iws
+
+# Eclipse
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# VS Code
+.vscode/
+
+# Build artifacts (Maven / Gradle)
+target/
+build/
+*.class
+
+# OS Files
+.DS_Store
+Thumbs.db

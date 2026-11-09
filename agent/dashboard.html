@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Dashboard – EstateX</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body><div class="dashboard-layout">
+    <!-- Agent Sidebar: #0E1627 with active #9D6B53 (Section 9) -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+        <span class="role-badge-tag" style="background: rgba(189, 142, 137, 0.2); color: var(--secondary); border-color: var(--secondary);">Agent Portal</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-title">Agent Portal</div>
+
+        <a href="dashboard.html" class="sidebar-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a>
+
+        <a href="../public/properties.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          Property Listings
+        </a>
+
+        <a href="add-property.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          Add Property
+        </a>
+
+        <a href="properties.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+          Manage Properties
+        </a>
+
+        <a href="inquiries.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          Inquiries
+        </a>
+
+        <a href="bookings.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Bookings
+        </a>
+
+        <div class="sidebar-section-title">Personal</div>
+
+        <a href="profile.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="../public/login.html" class="sidebar-item" style="color: #F87171;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Logout
+        </a>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <!-- Agent Top Bar with Required Profile Icon (Section 9) -->
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <div>
+            <div class="topbar-breadcrumb">Agent Portal &gt; Overview</div>
+            <h1 class="topbar-title">Agent Control Center</h1>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Topbar search -->
+          <div class="topbar-search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" placeholder="Search listing ID, client...">
+          </div>
+
+
+          <!-- REQUIRED Profile Icon in Agent Top Bar -->
+          <a href="profile.html" class="topbar-user" title="Agent Profile">
+            <div class="user-avatar-circle" id="topbarAgentAvatar">
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Agent">
+            </div>
+            <div class="user-meta-info">
+              <span class="user-meta-name" id="topbarAgentName">Agent</span>
+              <span class="user-meta-role" id="topbarAgentRole">Licensed Agent</span>
+            </div>
+          </a>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Summary Cards (Section 9) -->
+        <section class="stat-grid-4">
+          <!-- Total Properties -->
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number" id="statTotalProperties">0</span>
+              <span class="stat-label">Total Properties</span>
+            </div>
+          </div>
+
+          <!-- Active Listings -->
+          <div class="stat-card">
+            <div class="stat-icon icon-accent">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number" id="statActiveListings">0</span>
+              <span class="stat-label">Active Listings</span>
+            </div>
+          </div>
+
+          <!-- Pending Inquiries -->
+          <div class="stat-card">
+            <div class="stat-icon icon-dark">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number" id="statPendingInquiries">0</span>
+              <span class="stat-label">Pending Inquiries</span>
+            </div>
+          </div>
+
+          <!-- Pending Bookings -->
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number" id="statPendingBookings">0</span>
+              <span class="stat-label">Pending Bookings</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recent Property Listings Table (Section 9) -->
+        <section class="card" style="margin-bottom: 28px;">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Recent Property Listings</h2>
+              <p style="font-size: 0.8rem;">Inventory managed under your agency account</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <a href="add-property.html" class="btn btn-primary btn-sm">+ Add New Property</a>
+              <a href="properties.html" class="btn btn-outline btn-sm">Manage All</a>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Location</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="recentPropertiesTableBody">
+                <tr>
+                  <td colspan="6" style="text-align: center; padding: 24px; color: var(--text-muted);">
+                    Loading recent property listings...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Two Columns Grid: Recent Inquiries & Recent Bookings (Section 9) -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <!-- Recent Inquiries Table -->
+          <section class="card">
+            <div class="card-header">
+              <h3 class="card-title">Recent Inquiries</h3>
+              <a href="inquiries.html" class="btn btn-outline btn-sm">View All</a>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Property</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="agentRecentInquiriesTableBody">
+                  <tr>
+                    <td colspan="5" style="text-align: center; padding: 20px; color: var(--text-muted);">
+                      Loading recent inquiries...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Recent Bookings Table -->
+          <section class="card">
+            <div class="card-header">
+              <h3 class="card-title">Recent Bookings</h3>
+              <a href="bookings.html" class="btn btn-outline btn-sm">View All</a>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Property</th>
+                    <th>Viewing Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="agentRecentBookingsTableBody">
+                  <tr>
+                    <td colspan="5" style="text-align: center; padding: 20px; color: var(--text-muted);">
+                      Loading recent bookings...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="dashboard-footer">
+        <div>&copy; 2026 EstateX Property Portal. All rights reserved.</div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal: Delete Property Confirmation (Section 10) -->
+  <div class="modal-overlay" id="deletePropertyModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Delete Property Listing?</h3>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-weight: 600; margin-bottom: 8px;">Are you sure you want to delete this property?</p>
+        <p id="deleteModalPropertyName" style="color: var(--secondary); font-weight: 600;"></p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;">This will permanently take down the property listing and cancel all associated viewing appointments.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirmDeletePropertyBtn">Delete Property</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    const API_BASE_URL = window.API_BASE_URL || (window.location.port === '8081' ? '' : 'http://localhost:8081');
+    let propertyToDeleteId = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      syncAgentInfo();
+      loadDashboardStats();
+      loadRecentProperties();
+      loadAgentDashboardBookings();
+      loadAgentDashboardInquiries();
+
+      const confirmBtn = document.getElementById('confirmDeletePropertyBtn');
+      if (confirmBtn) {
+        confirmBtn.addEventListener('click', executeDeleteProperty);
+      }
+    });
+
+    function syncAgentInfo() {
+      const auth = getAuthUser();
+      if (!auth) return;
+      const nameElem = document.getElementById('topbarAgentName');
+      const roleElem = document.getElementById('topbarAgentRole');
+      const avatarElem = document.getElementById('topbarAgentAvatar');
+
+      if (nameElem && auth.name) nameElem.textContent = auth.name;
+      else if (nameElem && auth.fullName) nameElem.textContent = auth.fullName;
+
+      if (roleElem) {
+        const u = auth.username || '';
+        const userTag = u.startsWith('@') ? u : `@${u}`;
+        roleElem.textContent = u ? `${userTag} • Licensed Agent` : 'Licensed Agent';
+      }
+
+      if (avatarElem && (auth.profileImage || auth.profilePhotoUrl)) {
+        const pic = auth.profileImage || auth.profilePhotoUrl;
+        avatarElem.innerHTML = `<img src="${pic}" alt="" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">`;
+      }
+    }
+
+    async function loadDashboardStats() {
+      const auth = getAuthUser();
+      const agentId = auth && auth.id ? auth.id : '';
+      const agentUsername = auth && auth.username ? auth.username : '';
+
+      try {
+        const params = new URLSearchParams();
+        if (agentId) params.append('agentId', agentId);
+        if (agentUsername) params.append('agentUsername', agentUsername);
+
+        const url = `${API_BASE_URL}/api/properties/stats?${params.toString()}`;
+        const res = await fetch(url);
+        if (res.ok) {
+          const stats = await res.json();
+          document.getElementById('statTotalProperties').textContent = stats.totalProperties ?? 0;
+          document.getElementById('statActiveListings').textContent = stats.activeListings ?? 0;
+        }
+      } catch (err) {
+        console.error('Could not load stats from backend:', err);
+      }
+    }
+
+    async function loadRecentProperties() {
+      const tbody = document.getElementById('recentPropertiesTableBody');
+      const auth = getAuthUser();
+      const agentId = auth && auth.id ? auth.id : '';
+      const agentUsername = auth && auth.username ? auth.username : '';
+
+      try {
+        const params = new URLSearchParams();
+        if (agentId) params.append('agentId', agentId);
+        if (agentUsername) params.append('agentUsername', agentUsername);
+
+        const url = `${API_BASE_URL}/api/properties?${params.toString()}`;
+        const res = await fetch(url);
+        if (res.ok) {
+          const properties = await res.json();
+          // Pre-cache properties in sessionStorage and localStorage for instant detail page viewing
+          if (Array.isArray(properties)) {
+            properties.forEach(p => {
+              try {
+                sessionStorage.setItem('estatex_prop_' + p.id, JSON.stringify(p));
+                localStorage.setItem('estatex_prop_' + p.id, JSON.stringify(p));
+              } catch (e) {}
+            });
+          }
+          renderRecentProperties(properties.slice(0, 5));
+        } else {
+          tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 24px; color: var(--delete-dark-red);">Failed to retrieve properties from server.</td></tr>`;
+        }
+      } catch (err) {
+        console.error('Backend unavailable, error:', err);
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 24px; color: var(--text-muted);">Could not connect to backend server.</td></tr>`;
+      }
+    }
+
+    function renderRecentProperties(list) {
+      const tbody = document.getElementById('recentPropertiesTableBody');
+      if (!list || list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align: center; padding: 32px; color: var(--text-muted);">
+              No property listings found under your account. <a href="add-property.html" style="color: var(--secondary); font-weight: 600; text-decoration: underline;">Add your first property</a>.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = list.map(p => {
+        let badgeClass = 'badge-approved';
+        const st = (p.status || 'Active').toLowerCase();
+        if (st.includes('review') || st.includes('pending') || st.includes('draft')) {
+          badgeClass = 'badge-pending';
+        } else if (st.includes('sold') || st.includes('inactive')) {
+          badgeClass = 'badge-inactive';
+        }
+
+        const priceText = p.listingType === 'rent'
+          ? `LKR ${Number(p.price).toLocaleString()} / mo`
+          : `LKR ${Number(p.price).toLocaleString()}`;
+
+        return `
+          <tr>
+            <td>
+              <div class="table-cell-bold">${escapeHtml(p.title)}</div>
+              <div class="table-cell-sub">ID: #PROP-${p.id}</div>
+            </td>
+            <td>${escapeHtml(p.propertyType || '-')}</td>
+            <td>${escapeHtml(p.location || '-')}</td>
+            <td>${priceText}</td>
+            <td><span class="badge ${badgeClass}">${escapeHtml(p.status || 'Active')}</span></td>
+            <td>
+              <div class="table-actions">
+                <a href="../public/property-details.html?id=${p.id}" class="btn btn-outline btn-sm">View</a>
+                <a href="add-property.html?edit=${p.id}" class="btn btn-outline btn-sm">Edit</a>
+                <button type="button" class="btn btn-outline btn-sm" style="color: var(--delete-dark-red);" onclick="openDeleteModal(${p.id}, '${escapeHtml(p.title)}')">Delete</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function openDeleteModal(id, title) {
+      propertyToDeleteId = id;
+      const nameElem = document.getElementById('deleteModalPropertyName');
+      if (nameElem) nameElem.textContent = `Listing #PROP-${id}: ${title}`;
+      openModal('deletePropertyModal');
+    }
+
+    async function executeDeleteProperty() {
+      if (!propertyToDeleteId) return;
+
+      const confirmBtn = document.getElementById('confirmDeletePropertyBtn');
+      confirmBtn.disabled = true;
+      confirmBtn.textContent = 'Deleting...';
+
+      const auth = getAuthUser();
+      const agentUsername = auth ? auth.username : '';
+
+      try {
+        const url = agentUsername
+          ? `${API_BASE_URL}/api/properties/${propertyToDeleteId}?agentUsername=${encodeURIComponent(agentUsername)}`
+          : `${API_BASE_URL}/api/properties/${propertyToDeleteId}`;
+
+        const res = await fetch(url, { method: 'DELETE' });
+        if (res.ok) {
+          showToast('Property listing deleted successfully.', 'success');
+          closeModal('deletePropertyModal');
+          loadDashboardStats();
+          loadRecentProperties();
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          showToast(errData.message || 'Failed to delete property.', 'danger');
+        }
+      } catch (err) {
+        console.error('Delete error:', err);
+        showToast('Unable to connect to backend server.', 'danger');
+      } finally {
+        confirmBtn.disabled = false;
+        confirmBtn.textContent = 'Delete Property';
+        propertyToDeleteId = null;
+      }
+    }
+
+    async function loadAgentDashboardBookings() {
+      const auth = getAuthUser();
+      const agentUsername = auth && auth.username ? auth.username : '';
+      const tbody = document.getElementById('agentRecentBookingsTableBody');
+
+      try {
+        const url = agentUsername
+          ? `${API_BASE_URL}/api/bookings?agentUsername=${encodeURIComponent(agentUsername)}`
+          : `${API_BASE_URL}/api/bookings`;
+
+        const res = await fetch(url);
+        if (res.ok) {
+          const bookings = await res.json();
+          // Update pending bookings counter
+          const pendingCount = bookings.filter(b => (b.status || '').toLowerCase() === 'pending').length;
+          const statPending = document.getElementById('statPendingBookings');
+          if (statPending) statPending.textContent = pendingCount;
+
+          renderAgentDashboardBookings(bookings.slice(0, 5));
+        } else {
+          tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px; color: var(--delete-dark-red);">Failed to load recent bookings.</td></tr>`;
+        }
+      } catch (err) {
+        console.warn('Could not load agent dashboard bookings:', err);
+      }
+    }
+
+    function renderAgentDashboardBookings(list) {
+      const tbody = document.getElementById('agentRecentBookingsTableBody');
+      if (!list || list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" style="text-align: center; padding: 24px; color: var(--text-muted);">
+              No viewing appointments requested yet.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = list.map(b => {
+        const rawStatus = (b.status || 'Pending').trim();
+        const statusLower = rawStatus.toLowerCase();
+        let badgeClass = 'badge-pending';
+        if (statusLower === 'approved') badgeClass = 'badge-approved';
+        else if (statusLower === 'completed') badgeClass = 'badge-completed';
+        else if (statusLower === 'rejected') badgeClass = 'badge-rejected';
+        else if (statusLower === 'cancelled') badgeClass = 'badge-cancelled';
+
+        const code = b.bookingCode || `#BK-${b.id}`;
+
+        return `
+          <tr>
+            <td>
+              <div class="table-cell-bold">${escapeHtml(b.customerName || 'Customer')}</div>
+              <div class="table-cell-sub">${code}</div>
+            </td>
+            <td>${escapeHtml(b.propertyTitle || 'Property #' + b.propertyId)}</td>
+            <td>${b.viewingDate || '-'} &bull; ${escapeHtml(b.timeSlot || '10:00 AM')}</td>
+            <td><span class="badge ${badgeClass}">${escapeHtml(rawStatus)}</span></td>
+            <td>
+              <a href="bookings.html" class="btn btn-outline btn-sm">Manage</a>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function loadAgentDashboardInquiries() {
+      const auth = getAuthUser();
+      const agentUsername = auth && auth.username ? auth.username : '';
+      const tbody = document.getElementById('agentRecentInquiriesTableBody');
+
+      try {
+        const url = agentUsername
+          ? `${API_BASE_URL}/api/inquiries?agentUsername=${encodeURIComponent(agentUsername)}`
+          : `${API_BASE_URL}/api/inquiries`;
+
+        const res = await fetch(url);
+        if (res.ok) {
+          const inquiries = await res.json();
+          const pendingCount = inquiries.filter(inq => (inq.status || '').toLowerCase() === 'pending').length;
+          const statPending = document.getElementById('statPendingInquiries');
+          if (statPending) statPending.textContent = pendingCount;
+
+          renderAgentDashboardInquiries(inquiries.slice(0, 5));
+        } else {
+          if (tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px; color: var(--delete-dark-red);">Failed to load recent inquiries.</td></tr>`;
+        }
+      } catch (err) {
+        console.warn('Could not load agent dashboard inquiries:', err);
+      }
+    }
+
+    function renderAgentDashboardInquiries(list) {
+      const tbody = document.getElementById('agentRecentInquiriesTableBody');
+      if (!tbody) return;
+
+      if (!list || list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" style="text-align: center; padding: 24px; color: var(--text-muted);">
+              No customer inquiries received yet.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = list.map(inq => {
+        const isReplied = (inq.status || '').toLowerCase() === 'replied';
+        const badgeClass = isReplied ? 'badge-approved' : 'badge-pending';
+        const statusLabel = isReplied ? 'Replied' : 'Pending';
+
+        return `
+          <tr>
+            <td>
+              <div class="table-cell-bold">${escapeHtml(inq.customerName || 'Customer')}</div>
+              <div class="table-cell-sub">${escapeHtml(inq.customerPhone || inq.customerEmail || '')}</div>
+            </td>
+            <td>${escapeHtml(inq.propertyTitle || 'Property #' + inq.propertyId)}</td>
+            <td>${escapeHtml(inq.sentDate || '-')}</td>
+            <td><span class="badge ${badgeClass}">${escapeHtml(statusLabel)}</span></td>
+            <td>
+              <a href="inquiries.html" class="btn ${isReplied ? 'btn-outline' : 'btn-primary'} btn-sm">
+                ${isReplied ? 'View' : 'Reply'}
+              </a>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+  </script>
+</body>
+</html>

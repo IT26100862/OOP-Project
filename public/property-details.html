@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oceanview Luxury Architectural Villa – EstateX</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=7.0">
+</head>
+<body><!-- Navigation Bar -->
+  <header>
+    <nav class="public-navbar" aria-label="Main Navigation">
+      <div class="nav-container">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Home</a></li>
+          <li><a href="properties.html" class="nav-link active">Properties</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
+          <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="profile-dropdown-wrapper">
+            <button class="profile-icon-btn" aria-label="User Account Menu">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </button>
+            <div class="profile-dropdown-menu">
+              <div class="profile-dropdown-header">
+                <div class="user-name">Welcome to EstateX</div>
+                <div class="user-role">Account Access</div>
+              </div>
+              <a href="login.html">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                Sign In
+              </a>
+              <a href="register.html">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                Create Account
+              </a>
+            </div>
+          </div>
+          <a href="login.html" class="btn btn-outline" style="color: var(--primary-light); border-color: rgba(255,237,216,0.2);">Sign In</a>
+          <a href="register.html" class="btn btn-primary">Register</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main style="max-width: var(--max-content-width); margin: 36px auto; padding: 0 32px; width: 100%;">
+    <!-- Breadcrumb & Header -->
+    <div class="property-detail-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px;">
+      <div>
+        <div style="display: flex; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">
+          <a href="../index.html">Home</a> &gt; <a href="properties.html">Properties</a> &gt; <span id="detailBreadcrumb">Property Details</span>
+        </div>
+        <h1 id="detailTitle">Loading property...</h1>
+        <div style="display: flex; align-items: center; gap: 6px; color: var(--text-secondary); margin-top: 6px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span id="detailAddress">Loading location...</span>
+        </div>
+      </div>
+      <div style="text-align: right;">
+        <span class="badge badge-approved" id="detailListingTypeBadge" style="font-size: 0.85rem; padding: 6px 14px; margin-bottom: 8px;">Listing</span>
+        <div style="font-size: 2rem; font-weight: 800; color: var(--accent-dark);" id="detailPrice">Loading...</div>
+      </div>
+    </div>
+
+    <!-- Large Property Image Gallery -->
+    <div class="property-gallery-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 36px; height: 440px; max-height: 440px; min-height: 0;">
+      <div style="height: 100%; min-height: 0; min-width: 0; overflow: hidden; position: relative; background: #0E1627; border-radius: var(--radius-md);">
+        <img id="detailMainImg" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Main Facade" style="width: 100%; height: 100%; max-height: 100%; object-fit: cover; object-position: center; display: block; transition: opacity 0.3s ease;">
+      </div>
+      <div style="display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 16px; height: 100%; min-height: 0; overflow: hidden;">
+        <div style="height: 100%; min-height: 0; min-width: 0; overflow: hidden; position: relative; background: #0E1627; border-radius: var(--radius-sm); cursor: pointer;" onclick="swapMainImage('detailSubImg1')" title="Click to view in main preview">
+          <img id="detailSubImg1" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Interior" style="width: 100%; height: 100%; max-height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.25s ease, opacity 0.25s ease;">
+        </div>
+        <div style="height: 100%; min-height: 0; min-width: 0; overflow: hidden; position: relative; background: #0E1627; border-radius: var(--radius-sm); cursor: pointer;" onclick="swapMainImage('detailSubImg2')" title="Click to view in main preview">
+          <img id="detailSubImg2" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Outdoor" style="width: 100%; height: 100%; max-height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.25s ease, opacity 0.25s ease;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content & Sidebar Grid -->
+    <div class="property-details-layout" style="display: grid; grid-template-columns: 2fr 1fr; gap: 36px;">
+      <!-- Left Column: Specs, Description, Reviews -->
+      <div>
+        <!-- Key Specifications Grid -->
+        <div class="card" style="margin-bottom: 28px;">
+          <h3 class="card-title">Property Overview</h3>
+          <div class="property-specs-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; text-align: center; margin-top: 16px;">
+            <div style="padding: 14px; background: var(--bg-cream-soft); border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+              <div style="color: var(--text-muted); font-size: 0.8rem;">Bedrooms</div>
+              <div id="detailBeds" style="font-size: 1.3rem; font-weight: 800; color: var(--primary-dark);">&mdash;</div>
+            </div>
+            <div style="padding: 14px; background: var(--bg-cream-soft); border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+              <div style="color: var(--text-muted); font-size: 0.8rem;">Bathrooms</div>
+              <div id="detailBaths" style="font-size: 1.3rem; font-weight: 800; color: var(--primary-dark);">&mdash;</div>
+            </div>
+            <div style="padding: 14px; background: var(--bg-cream-soft); border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+              <div style="color: var(--text-muted); font-size: 0.8rem;">Floor Area</div>
+              <div id="detailArea" style="font-size: 1.3rem; font-weight: 800; color: var(--primary-dark);">&mdash;</div>
+            </div>
+            <div style="padding: 14px; background: var(--bg-cream-soft); border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+              <div style="color: var(--text-muted); font-size: 0.8rem;">Property Type</div>
+              <div id="detailType" style="font-size: 1.3rem; font-weight: 800; color: var(--primary-dark);">&mdash;</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="card" style="margin-bottom: 28px;">
+          <h3 class="card-title">Description</h3>
+          <p id="detailDescription" style="margin-top: 14px; line-height: 1.7; color: var(--text-secondary);">
+            Loading description...
+          </p>
+
+          <h4 style="margin: 24px 0 14px; font-size: 1rem;">Amenities &amp; Features</h4>
+          <div id="detailAmenities" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; font-size: 0.9rem;">
+            <div>&bull; Loading amenities...</div>
+          </div>
+        </div>
+
+        <!-- Verified Reviews Section -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title" id="detailReviewsTitle">Client Reviews (0)</h3>
+            <button type="button" class="btn btn-outline btn-sm" onclick="handleDetailActionClick('review', 'addReviewModal')">Write a Review</button>
+          </div>
+
+          <div id="detailReviewsContainer" style="display: flex; flex-direction: column; gap: 18px;">
+            <div style="padding: 16px; color: var(--text-muted); text-align: center;">Loading reviews...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Agent Information & Action CTAs -->
+      <div>
+        <!-- Agent Information Card -->
+        <div class="card" style="margin-bottom: 24px; position: sticky; top: 96px;">
+          <h3 class="card-title" style="margin-bottom: 16px;">Listing Agent</h3>
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+            <img id="detailAgentAvatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Agent Avatar" style="width: 64px; height: 64px; border-radius: var(--radius-full); object-fit: cover; border: 2px solid var(--accent);">
+            <div>
+              <div id="detailAgentName" style="font-weight: 700; font-size: 1.1rem; color: var(--primary-dark);">Loading agent...</div>
+              <div id="detailAgentRole" style="font-size: 0.8rem; color: var(--text-muted);">Licensed Real Estate Agent</div>
+              <div id="detailAgentAgency" style="font-size: 0.8rem; color: var(--accent-dark); font-weight: 600;">EstateX Partner</div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem; margin-bottom: 24px; padding: 14px; background: var(--bg-app); border-radius: var(--radius-sm);">
+            <div><strong>Agency:</strong> <span id="detailAgentAgencySub">EstateX Premier Partner</span></div>
+            <div><strong>Direct Line:</strong> <span id="detailAgentPhone">Loading...</span></div>
+            <div><strong>Email:</strong> <span id="detailAgentEmail">Loading...</span></div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <button type="button" class="btn btn-primary" style="width: 100%;" onclick="handleDetailActionClick('book', 'bookViewingModal')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Book Private Viewing
+            </button>
+            <button type="button" class="btn btn-dark" style="width: 100%;" onclick="handleDetailActionClick('inquiry', 'inquiryModal')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              Send Inquiry to Agent
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal: Book Viewing Form (per requirement Section 7) -->
+  <div class="modal-overlay" id="bookViewingModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Book Property Viewing</h3>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="bookViewingForm" onsubmit="handlePropertyDetailBooking(event)">
+        <input type="hidden" name="propertyId" id="modalBookingPropertyId" value="">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Property</label>
+            <input type="text" id="modalBookingProperty" class="form-control" value="Loading property..." readonly>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Preferred Date <span class="req">*</span></label>
+              <input type="date" class="form-control" id="modalBookingDate" name="date" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Preferred Time <span class="req">*</span></label>
+              <select class="form-control" id="modalBookingTime" name="time" required>
+                <option value="10:00 AM">10:00 AM - Morning</option>
+                <option value="02:00 PM">02:00 PM - Afternoon</option>
+                <option value="04:30 PM">04:30 PM - Sunset</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Personal Message / Requirements</label>
+            <textarea class="form-control" id="modalBookingMessage" name="message" placeholder="Mention any specific areas or deed documents you wish to inspect..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" id="btnSubmitDetailBooking" class="btn btn-primary">Submit Booking</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Send Inquiry -->
+  <div class="modal-overlay" id="inquiryModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Send Inquiry to Agent</h3>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="inquiryForm" onsubmit="handlePropertyDetailInquiry(event)">
+        <input type="hidden" name="propertyId" id="modalInquiryPropertyId" value="">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Recipient Agent</label>
+            <input type="text" id="modalInquiryAgent" class="form-control" value="Loading agent..." readonly>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Message <span class="req">*</span></label>
+            <textarea class="form-control" id="modalInquiryMessage" name="message" rows="4" placeholder="Hello, I would like to inquire regarding bank loan valuation and title deed clearance for this property..." required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" id="btnSubmitDetailInquiry" class="btn btn-primary">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add Review (per requirement Section 8) -->
+  <div class="modal-overlay" id="addReviewModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Write a Property Review</h3>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="addReviewForm" onsubmit="handlePropertyDetailReview(event);">
+        <input type="hidden" name="propertyId" id="modalReviewPropertyId" value="">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Rating <span class="req">*</span></label>
+            <select class="form-control" id="modalReviewRating" required>
+              <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; 5 Stars (Exceptional)</option>
+              <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; 4 Stars (Very Good)</option>
+              <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; 3 Stars (Average)</option>
+              <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; 2 Stars (Below Expectation)</option>
+              <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; 1 Star (Poor)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Review <span class="req">*</span></label>
+            <textarea class="form-control" id="modalReviewComment" placeholder="Share your experience regarding the property condition, accuracy of listings, and agent hospitality..." required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btnSubmitDetailReview">Submit Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Global Footer -->
+  <footer class="public-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+        <p>Find your perfect property with EstateX. The leading real estate portal connecting buyers, tenants, certified agents, and property managers.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+          <a href="#" class="social-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path></svg></a>
+          <a href="#" class="social-link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="properties.html">Properties</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="../user/profile.html">Profile</a></li>
+          <li><a href="../user/bookings.html">My Bookings</a></li>
+          <li><a href="../user/reviews.html">My Reviews</a></li>
+          <li><a href="login.html">Logout</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <div class="contact-info-list">
+          <div class="contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>info@estatex.lk</span>
+          </div>
+          <div class="contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>+94 11 234 5678</span>
+          </div>
+          <div class="contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Level 12, West Tower, World Trade Center, Colombo 01</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <div>&copy; 2026 EstateX. All rights reserved.</div>
+        <div>EstateX Real Estate Management System</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    const API_BASE_URL = window.API_BASE_URL || (window.location.port === '8081' ? '' : 'http://localhost:8081');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const propId = urlParams.get('id');
+    let hasRenderedFromCache = false;
+
+    // Instant Synchronous Cache Check (executes immediately on load, 0ms latency)
+    if (propId) {
+      try {
+        const cachedRaw = sessionStorage.getItem('estatex_prop_' + propId) || localStorage.getItem('estatex_prop_' + propId);
+        if (cachedRaw) {
+          const cachedProp = JSON.parse(cachedRaw);
+          if (cachedProp && String(cachedProp.id) === String(propId)) {
+            renderProperty(cachedProp);
+            hasRenderedFromCache = true;
+          }
+        }
+      } catch (e) {
+        console.warn('Cache read error:', e);
+      }
+    }
+
+    function initDetails() {
+      if (!propId) {
+        showNoPropertyState();
+        return;
+      }
+      if (!hasRenderedFromCache) {
+        try {
+          const cachedRaw = sessionStorage.getItem('estatex_prop_' + propId) || localStorage.getItem('estatex_prop_' + propId);
+          if (cachedRaw) {
+            const cachedProp = JSON.parse(cachedRaw);
+            if (cachedProp && String(cachedProp.id) === String(propId)) {
+              renderProperty(cachedProp);
+              hasRenderedFromCache = true;
+            }
+          }
+        } catch (e) {}
+      }
+
+      loadPropertyDetail(propId);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDetails);
+    } else {
+      initDetails();
+    }
+
+    function renderProperty(p) {
+      if (!p) return;
+
+      // 1. Title and Breadcrumb
+      document.title = `${p.title || 'Property'} – EstateX`;
+      const titleEl = document.getElementById('detailTitle');
+      if (titleEl) titleEl.textContent = p.title || 'Property Listing';
+
+      const breadcrumbEl = document.getElementById('detailBreadcrumb');
+      if (breadcrumbEl) breadcrumbEl.textContent = p.title || 'Property Details';
+
+      // 2. Address & Location
+      const addrEl = document.getElementById('detailAddress');
+      if (addrEl) {
+        const parts = [p.address, p.location].filter(Boolean);
+        addrEl.textContent = parts.length > 0 ? parts.join(', ') : 'Sri Lanka';
+      }
+
+      // 3. Pricing and Badges
+      const isRent = (p.listingType || '').toLowerCase() === 'rent';
+      const priceEl = document.getElementById('detailPrice');
+      if (priceEl) {
+        const formattedPrice = Number(p.price || 0).toLocaleString();
+        priceEl.textContent = isRent ? `LKR ${formattedPrice} / Month` : `LKR ${formattedPrice}`;
+      }
+
+      const badgeEl = document.getElementById('detailListingTypeBadge');
+      if (badgeEl) {
+        badgeEl.textContent = isRent ? 'For Rent' : 'For Sale';
+      }
+
+      // 4. Specifications Overview
+      const bedsEl = document.getElementById('detailBeds');
+      if (bedsEl) bedsEl.textContent = `${p.bedrooms != null ? p.bedrooms : 0} Beds`;
+
+      const bathsEl = document.getElementById('detailBaths');
+      if (bathsEl) bathsEl.textContent = `${p.bathrooms != null ? p.bathrooms : 0} Baths`;
+
+      const areaEl = document.getElementById('detailArea');
+      if (areaEl) areaEl.textContent = `${Number(p.floorAreaSqft || 0).toLocaleString()} sqft`;
+
+      const typeEl = document.getElementById('detailType');
+      if (typeEl) typeEl.textContent = p.propertyType || 'Residential';
+
+      // 5. Description
+      const descEl = document.getElementById('detailDescription');
+      if (descEl) {
+        descEl.textContent = p.description || 'Exclusive luxury property with premium fittings, prime accessibility, and verified documentation in Sri Lanka.';
+      }
+
+      // 6. Amenities
+      const amenEl = document.getElementById('detailAmenities');
+      if (amenEl) {
+        let list = [];
+        if (p.amenities && p.amenities.trim().length > 0) {
+          list = p.amenities.split(',').map(a => a.trim()).filter(Boolean);
+        } else {
+          list = ['24/7 Security', 'Covered Garage', 'Air Conditioning', 'Solar Power Integration', 'Landscaped Garden', 'Backup Generator'];
+        }
+
+        if (list.length > 0) {
+          amenEl.innerHTML = list.map(a => `
+            <div style="display: flex; align-items: center; gap: 8px; font-weight: 500; color: var(--text-primary);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>${escapeHtml(a)}</span>
+            </div>
+          `).join('');
+        } else {
+          amenEl.innerHTML = `<div style="color: var(--text-muted); font-size: 0.85rem;">Standard verified fixtures &amp; amenities included.</div>`;
+        }
+      }
+
+      // 7. Large Image Gallery
+      let galleryImages = [];
+      if (p.primaryImage) {
+        galleryImages.push(p.primaryImage);
+      }
+      if (Array.isArray(p.images)) {
+        p.images.forEach(img => {
+          if (img && !galleryImages.includes(img)) {
+            galleryImages.push(img);
+          }
+        });
+      }
+      if (galleryImages.length === 0) {
+        galleryImages = [
+          'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+          'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80'
+        ];
+      }
+
+      const mainImg = document.getElementById('detailMainImg');
+      if (mainImg) mainImg.src = galleryImages[0];
+
+      const sub1 = document.getElementById('detailSubImg1');
+      if (sub1) sub1.src = galleryImages.length > 1 ? galleryImages[1] : galleryImages[0];
+
+      const sub2 = document.getElementById('detailSubImg2');
+      if (sub2) sub2.src = galleryImages.length > 2 ? galleryImages[2] : (galleryImages.length > 1 ? galleryImages[1] : galleryImages[0]);
+
+      // 8. Agent Profile (Directly populated from PropertyDto, no blocking secondary network call)
+      const agentName = p.agentName || 'Real Estate Agent';
+      const agentEmail = p.agentEmail || 'agent@estatex.lk';
+      const agentPhone = p.agentPhone || '+94 77 345 6789';
+      const agentAgency = p.agentAgency || 'EstateX Premier Partner';
+      const agentAvatar = p.agentProfileImage;
+
+      const agentNameEl = document.getElementById('detailAgentName');
+      if (agentNameEl) agentNameEl.textContent = agentName;
+
+      const agentEmailEl = document.getElementById('detailAgentEmail');
+      if (agentEmailEl) agentEmailEl.textContent = agentEmail;
+
+      const agentPhoneEl = document.getElementById('detailAgentPhone');
+      if (agentPhoneEl) agentPhoneEl.textContent = agentPhone;
+
+      const agentAgencyEl = document.getElementById('detailAgentAgency');
+      if (agentAgencyEl) agentAgencyEl.textContent = agentAgency;
+
+      const agentAgencySubEl = document.getElementById('detailAgentAgencySub');
+      if (agentAgencySubEl) agentAgencySubEl.textContent = agentAgency;
+
+      if (agentAvatar) {
+        const avatarEl = document.getElementById('detailAgentAvatar');
+        if (avatarEl) avatarEl.src = agentAvatar;
+      }
+
+      // 9. Synchronize Modal Fields
+      const modalBookingProp = document.getElementById('modalBookingProperty');
+      if (modalBookingProp) modalBookingProp.value = `${p.title} (${p.location || 'Sri Lanka'})`;
+
+      const modalBookingPropId = document.getElementById('modalBookingPropertyId');
+      if (modalBookingPropId) modalBookingPropId.value = p.id;
+
+      const modalInquiryAgent = document.getElementById('modalInquiryAgent');
+      if (modalInquiryAgent) modalInquiryAgent.value = `${agentName} (${agentAgency})`;
+
+      const modalInquiryPropId = document.getElementById('modalInquiryPropertyId');
+      if (modalInquiryPropId) modalInquiryPropId.value = p.id;
+
+      const modalReviewPropId = document.getElementById('modalReviewPropertyId');
+      if (modalReviewPropId) modalReviewPropId.value = p.id;
+
+      // 10. Load verified reviews for this property
+      loadPropertyReviews(p.id);
+    }
+
+    async function loadPropertyDetail(id) {
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/properties/${id}`);
+        if (!res.ok) {
+          if (!hasRenderedFromCache) showNotFoundState(id);
+          return;
+        }
+        const p = await res.json();
+        try {
+          sessionStorage.setItem('estatex_prop_' + p.id, JSON.stringify(p));
+          localStorage.setItem('estatex_prop_' + p.id, JSON.stringify(p));
+        } catch (e) {}
+
+        renderProperty(p);
+      } catch (err) {
+        console.warn('Could not fetch property details from backend:', err);
+        if (!hasRenderedFromCache) {
+          showNotFoundState(id);
+        }
+      }
+    }
+
+    function showNotFoundState(id) {
+      document.title = 'Property Not Found – EstateX';
+      const titleEl = document.getElementById('detailTitle');
+      if (titleEl) titleEl.textContent = `Property #${id} Not Found`;
+      const addrEl = document.getElementById('detailAddress');
+      if (addrEl) addrEl.textContent = 'This property listing could not be found or has been removed.';
+      const priceEl = document.getElementById('detailPrice');
+      if (priceEl) priceEl.textContent = '—';
+      const badgeEl = document.getElementById('detailListingTypeBadge');
+      if (badgeEl) badgeEl.textContent = 'Unavailable';
+    }
+
+    function showNoPropertyState() {
+      document.title = 'Property Not Specified – EstateX';
+      const titleEl = document.getElementById('detailTitle');
+      if (titleEl) titleEl.textContent = 'No Property Selected';
+      const addrEl = document.getElementById('detailAddress');
+      if (addrEl) addrEl.innerHTML = '<a href="properties.html" style="color: var(--accent-dark); text-decoration: underline;">Click here to browse available properties</a>';
+      const priceEl = document.getElementById('detailPrice');
+      if (priceEl) priceEl.textContent = '—';
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function swapMainImage(subId) {
+      const subImg = document.getElementById(subId);
+      const mainImg = document.getElementById('detailMainImg');
+      if (subImg && mainImg && subImg.src && mainImg.src) {
+        const tempSrc = mainImg.src;
+        mainImg.style.opacity = '0.3';
+        setTimeout(() => {
+          mainImg.src = subImg.src;
+          subImg.src = tempSrc;
+          mainImg.style.opacity = '1';
+        }, 150);
+      }
+    }
+
+    // Action handler that requires user to be signed in
+    function handleDetailActionClick(actionType, modalId) {
+      const user = getAuthUser();
+      const urlParams = new URLSearchParams(window.location.search);
+      const propId = urlParams.get('id') || document.getElementById('modalBookingPropertyId')?.value || '';
+
+      if (!user) {
+        const returnUrl = `property-details.html?id=${encodeURIComponent(propId)}&action=${encodeURIComponent(actionType)}`;
+        try {
+          sessionStorage.setItem('estatex_redirect_url', returnUrl);
+        } catch (e) {}
+        window.location.href = `login.html?redirect=${encodeURIComponent(returnUrl)}&reason=${encodeURIComponent(actionType)}`;
+        return;
+      }
+
+      if (modalId) {
+        openModal(modalId);
+      }
+    }
+
+    // Set today as min date for booking modal and handle post-login action trigger
+    document.addEventListener('DOMContentLoaded', () => {
+      const dateEl = document.getElementById('modalBookingDate');
+      if (dateEl) {
+        const todayStr = new Date().toISOString().split('T')[0];
+        dateEl.min = todayStr;
+        dateEl.value = todayStr;
+      }
+
+      // Check if user was redirected back after logging in with an action parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const autoAction = urlParams.get('action');
+      const user = getAuthUser();
+      if (user && autoAction) {
+        setTimeout(() => {
+          if (autoAction === 'book') {
+            openModal('bookViewingModal');
+          } else if (autoAction === 'inquiry') {
+            openModal('inquiryModal');
+          } else if (autoAction === 'review') {
+            openModal('addReviewModal');
+          }
+          // Clean action parameter from URL bar without reloading
+          const cleanUrl = window.location.pathname + '?id=' + encodeURIComponent(urlParams.get('id') || '');
+          window.history.replaceState({}, document.title, cleanUrl);
+        }, 350);
+      }
+    });
+
+    async function handlePropertyDetailBooking(e) {
+      e.preventDefault();
+      const propId = document.getElementById('modalBookingPropertyId').value;
+      const date = document.getElementById('modalBookingDate').value;
+      const time = document.getElementById('modalBookingTime').value;
+      const message = document.getElementById('modalBookingMessage').value;
+
+      if (!propId) {
+        showToast('Property ID missing.', 'danger');
+        return;
+      }
+      if (!date) {
+        showToast('Please select a preferred viewing date.', 'danger');
+        return;
+      }
+
+      const authUser = getAuthUser();
+      if (!authUser) {
+        showToast('Please sign in to schedule a viewing.', 'warning');
+        const returnUrl = `property-details.html?id=${encodeURIComponent(propId)}&action=book`;
+        try {
+          sessionStorage.setItem('estatex_redirect_url', returnUrl);
+        } catch (err) {}
+        window.location.href = `login.html?redirect=${encodeURIComponent(returnUrl)}&reason=booking`;
+        return;
+      }
+
+      const username = authUser.username || authUser.email;
+
+      const btn = document.getElementById('btnSubmitDetailBooking');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Submitting...';
+      }
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/bookings?customerUsername=${encodeURIComponent(username)}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            propertyId: Number(propId),
+            customerUsername: username,
+            viewingDate: date,
+            timeSlot: time,
+            notes: message
+          })
+        });
+
+        if (res.ok) {
+          showToast('Viewing appointment scheduled successfully! Redirecting...', 'success');
+          setTimeout(() => {
+            window.location.href = '../user/bookings.html';
+          }, 700);
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          showToast(errData.message || 'Failed to schedule booking.', 'danger');
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = 'Submit Booking';
+          }
+        }
+      } catch (err) {
+        console.error('Error submitting booking from property details:', err);
+        showToast('Could not connect to backend server.', 'danger');
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = 'Submit Booking';
+        }
+      }
+    }
+
+    async function handlePropertyDetailInquiry(e) {
+      e.preventDefault();
+      const propId = document.getElementById('modalInquiryPropertyId').value;
+      const message = document.getElementById('modalInquiryMessage').value.trim();
+
+      if (!propId) {
+        showToast('Property ID missing.', 'danger');
+        return;
+      }
+      if (!message) {
+        showToast('Please type your inquiry message.', 'danger');
+        return;
+      }
+
+      const authUser = getAuthUser();
+      if (!authUser) {
+        showToast('Please sign in to send an inquiry.', 'warning');
+        const returnUrl = `property-details.html?id=${encodeURIComponent(propId)}&action=inquiry`;
+        try {
+          sessionStorage.setItem('estatex_redirect_url', returnUrl);
+        } catch (err) {}
+        window.location.href = `login.html?redirect=${encodeURIComponent(returnUrl)}&reason=inquiry`;
+        return;
+      }
+
+      const username = authUser.username || authUser.email;
+
+      const btn = document.getElementById('btnSubmitDetailInquiry');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+      }
+
+      try {
+        const url = `${API_BASE_URL}/api/inquiries?customerUsername=${encodeURIComponent(username)}`;
+
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            propertyId: Number(propId),
+            customerUsername: username,
+            message: message
+          })
+        });
+
+        if (res.ok) {
+          showToast('Inquiry sent to agent successfully! Redirecting...', 'success');
+          closeModal('inquiryModal');
+          document.getElementById('modalInquiryMessage').value = '';
+          setTimeout(() => {
+            window.location.href = '../user/inquiries.html';
+          }, 800);
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          showToast(errData.message || 'Failed to send inquiry.', 'danger');
+          if (btn) {
+            btn.disabled = false;
+            btn.textContent = 'Send Message';
+          }
+        }
+      } catch (err) {
+        console.error('Error sending inquiry:', err);
+        showToast('Could not connect to backend server.', 'danger');
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = 'Send Message';
+        }
+      }
+    }
+
+    function renderStarsText(rating) {
+      const r = Math.min(5, Math.max(1, Math.round(Number(rating) || 5)));
+      let stars = '';
+      for (let i = 1; i <= 5; i++) {
+        stars += (i <= r) ? '&#9733;' : '&#9734;';
+      }
+      return `${stars} (${Number(rating || 5).toFixed(1)})`;
+    }
+
+    function renderPropertyReviews(reviews) {
+      const titleEl = document.getElementById('detailReviewsTitle');
+      const containerEl = document.getElementById('detailReviewsContainer');
+      if (!containerEl) return;
+
+      const list = Array.isArray(reviews) ? reviews : [];
+      if (titleEl) {
+        titleEl.textContent = `Client Reviews (${list.length})`;
+      }
+
+      if (list.length === 0) {
+        containerEl.innerHTML = `
+          <div style="padding: 24px 16px; background: var(--bg-cream-soft); border-radius: var(--radius-sm); border: 1px dashed var(--border-light); text-align: center; color: var(--text-muted); font-size: 0.95rem;">
+            No reviews yet for this property. Be the first to write a review!
+          </div>
+        `;
+        return;
+      }
+
+      containerEl.innerHTML = list.map(rev => `
+        <div style="padding: 16px; background: var(--bg-cream-soft); border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+            <div style="font-weight: 700; color: var(--primary-dark);">${escapeHtml(rev.customerName || 'Verified Client')}</div>
+            <div style="color: #F59E0B; font-weight: 700;">${renderStarsText(rev.rating)}</div>
+          </div>
+          <p style="font-size: 0.9rem; margin-bottom: 6px;">"${escapeHtml(rev.comment || '')}"</p>
+          <div style="font-size: 0.75rem; color: var(--text-muted);">Verified Viewing &bull; ${escapeHtml(rev.formattedDate || rev.reviewDate || 'Recent')}</div>
+        </div>
+      `).join('');
+    }
+
+    async function loadPropertyReviews(propId) {
+      if (!propId) return;
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/reviews?propertyId=${propId}`);
+        if (!res.ok) return;
+        const reviews = await res.json();
+        renderPropertyReviews(reviews);
+      } catch (err) {
+        console.warn('Could not load reviews for property ' + propId, err);
+      }
+    }
+
+    async function handlePropertyDetailReview(e) {
+      e.preventDefault();
+      const propId = document.getElementById('modalReviewPropertyId').value;
+      const rating = document.getElementById('modalReviewRating').value;
+      const comment = document.getElementById('modalReviewComment').value.trim();
+
+      if (!propId) {
+        showToast('Property ID missing.', 'danger');
+        return;
+      }
+      if (!comment) {
+        showToast('Please enter your review comment.', 'danger');
+        return;
+      }
+
+      const authUser = getAuthUser();
+      if (!authUser) {
+        showToast('Please sign in to your account to submit a review.', 'warning');
+        const returnUrl = `property-details.html?id=${encodeURIComponent(propId)}&action=review`;
+        try {
+          sessionStorage.setItem('estatex_redirect_url', returnUrl);
+        } catch (err) {}
+        window.location.href = `login.html?redirect=${encodeURIComponent(returnUrl)}&reason=review`;
+        return;
+      }
+
+      const username = authUser.username || authUser.email;
+
+      const btn = document.getElementById('btnSubmitDetailReview');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Submitting...';
+      }
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/reviews?customerUsername=${encodeURIComponent(username)}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            propertyId: Number(propId),
+            rating: Number(rating),
+            comment: comment,
+            customerUsername: username
+          })
+        });
+
+        if (res.ok) {
+          showToast('Review submitted successfully! Thank you for your feedback.', 'success');
+          closeModal('addReviewModal');
+          document.getElementById('modalReviewComment').value = '';
+          loadPropertyReviews(propId);
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          showToast(errData.message || 'Failed to submit review.', 'danger');
+        }
+      } catch (err) {
+        console.error('Error submitting review:', err);
+        showToast('Could not connect to backend server.', 'danger');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = 'Submit Review';
+        }
+      }
+    }
+  </script>
+</body>
+</html>

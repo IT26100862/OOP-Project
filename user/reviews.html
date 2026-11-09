@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Reviews – EstateX</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=7.0">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <!-- User Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+        <span class="role-badge-tag">Customer Portal</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-title">Navigation</div>
+        <a href="dashboard.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a>
+        <a href="../public/properties.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          Browse Properties
+        </a>
+        <a href="bookings.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          My Bookings
+        </a>
+        <a href="inquiries.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          My Inquiries
+        </a>
+        <a href="reviews.html" class="sidebar-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          My Reviews
+        </a>
+        <a href="financial-breakdown.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line><line x1="7" y1="15" x2="7.01" y2="15"></line><line x1="12" y1="15" x2="12.01" y2="15"></line></svg>
+          Financial Breakdown
+        </a>
+        <div class="sidebar-section-title">Account Settings</div>
+        <a href="profile.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Profile
+        </a>
+        <a href="reset-password.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          Reset Password
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="../public/login.html" class="sidebar-item sidebar-item-logout-user">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Logout
+        </a>
+        <a href="javascript:void(0)" class="sidebar-item sidebar-item-delete-user" data-modal-target="deleteAccountModal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+          Delete Account
+        </a>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <div>
+            <div class="topbar-breadcrumb">Customer Portal &gt; Feedback</div>
+            <h1 class="topbar-title">My Property Reviews</h1>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="btn btn-primary btn-sm" onclick="openAddReviewModal()" title="Add New Review" aria-label="Add New Review">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span class="topbar-btn-label">Add New Review</span>
+          </button>
+          <a href="profile.html" class="topbar-user" title="My Profile">
+            <div class="user-avatar-circle">
+              <img id="topbarUserAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar">
+            </div>
+          </a>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- My Reviews Table (Section 8) -->
+        <div class="card" style="padding: 0;">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>PROPERTY</th>
+                  <th>RATING</th>
+                  <th>REVIEW COMMENT</th>
+                  <th>DATE</th>
+                  <th>ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody id="userReviewsTableBody">
+                <tr>
+                  <td colspan="5" style="text-align: center; padding: 36px; color: var(--text-muted);">
+                    Loading your reviews...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+      <footer class="dashboard-footer">
+        <div>&copy; 2026 EstateX Property Portal. All rights reserved.</div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal: Add Review (Section 8) -->
+  <div class="modal-overlay" id="addReviewModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Property Review</h3>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="addUserReviewForm" onsubmit="handleCreateUserReview(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Property <span class="req">*</span></label>
+            <select class="form-control" id="addReviewPropertySelect" required>
+              <option value="">Select a property...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Rating <span class="req">*</span></label>
+            <select class="form-control" id="addReviewRatingSelect" required>
+              <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; 5 Stars (Excellent)</option>
+              <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; 4 Stars (Good)</option>
+              <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; 3 Stars (Average)</option>
+              <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; 2 Stars (Below Average)</option>
+              <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; 1 Star (Poor)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Review / Comment <span class="req">*</span></label>
+            <textarea class="form-control" id="addReviewComment" rows="4" placeholder="Detail your experience regarding the property features, location and agent presentation..." required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btnSubmitAddReview">Submit Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Update Review (Section 8) -->
+  <div class="modal-overlay" id="editReviewModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Update Review</h3>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="editUserReviewForm" onsubmit="handleUpdateUserReview(event)">
+        <input type="hidden" id="editReviewId">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Property</label>
+            <input type="text" class="form-control" id="editReviewPropertyTitle" readonly>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Rating <span class="req">*</span></label>
+            <select class="form-control" id="editReviewRatingSelect" required>
+              <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; 5 Stars (Excellent)</option>
+              <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; 4 Stars (Good)</option>
+              <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; 3 Stars (Average)</option>
+              <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; 2 Stars (Below Average)</option>
+              <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; 1 Star (Poor)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Review / Comment <span class="req">*</span></label>
+            <textarea class="form-control" id="editReviewComment" rows="4" required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-primary" id="btnSubmitEditReview">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Delete Review Confirmation -->
+  <div class="modal-overlay" id="deleteReviewModal">
+    <div class="modal-container" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Delete Review?</h3>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="deleteReviewId">
+        <p>Are you sure you want to delete this property review? It will be permanently removed from public viewing.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+        <button type="button" class="btn btn-danger" id="btnConfirmDeleteReview" onclick="confirmDeleteUserReview()">Delete Review</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    const API_BASE_URL = 'http://localhost:8081';
+    let customerReviews = [];
+    let availableProperties = [];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      syncCustomerProfileHeader();
+      loadAvailableProperties();
+      loadCustomerReviews();
+    });
+
+    function getCustomerAuth() {
+      let authUser = null;
+      try {
+        const raw = sessionStorage.getItem('estatex_auth_user') || localStorage.getItem('estatex_auth_user');
+        if (raw) authUser = JSON.parse(raw);
+      } catch (err) {}
+
+      // Fallback default customer if none logged in
+      if (!authUser) {
+        authUser = {
+          username: 'dilshan@user',
+          fullName: 'Dilshan Perera',
+          email: 'dilshan.perera@gmail.com',
+          role: 'CUSTOMER'
+        };
+        try {
+          sessionStorage.setItem('estatex_auth_user', JSON.stringify(authUser));
+        } catch (e) {}
+      }
+      return authUser;
+    }
+
+    function syncCustomerProfileHeader() {
+      const user = getCustomerAuth();
+      if (user && user.profileImage) {
+        const avatarEl = document.getElementById('topbarUserAvatar');
+        if (avatarEl) avatarEl.src = user.profileImage;
+      }
+    }
+
+    function renderStarsText(rating) {
+      const r = Math.min(5, Math.max(1, Math.round(Number(rating) || 5)));
+      let stars = '';
+      for (let i = 1; i <= 5; i++) {
+        stars += (i <= r) ? '&#9733;' : '&#9734;';
+      }
+      return `${stars} ${Number(rating || 5).toFixed(1)}`;
+    }
+
+    async function loadAvailableProperties() {
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/properties`);
+        if (!res.ok) return;
+        availableProperties = await res.json();
+        const selectEl = document.getElementById('addReviewPropertySelect');
+        if (selectEl && Array.isArray(availableProperties)) {
+          selectEl.innerHTML = '<option value="">Select a property...</option>' +
+            availableProperties.map(p => `
+              <option value="${p.id}">${escapeHtml(p.title)} (${escapeHtml(p.location || 'Sri Lanka')})</option>
+            `).join('');
+        }
+      } catch (err) {
+        console.warn('Could not load properties for review form:', err);
+      }
+    }
+
+    async function loadCustomerReviews() {
+      const tbody = document.getElementById('userReviewsTableBody');
+      const user = getCustomerAuth();
+      const username = user ? (user.username || user.email) : '';
+
+      try {
+        const url = username
+          ? `${API_BASE_URL}/api/reviews?customerUsername=${encodeURIComponent(username)}`
+          : `${API_BASE_URL}/api/reviews`;
+
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        customerReviews = await res.json();
+        renderCustomerReviewsTable(customerReviews);
+      } catch (err) {
+        console.error('Error fetching customer reviews:', err);
+        if (tbody) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="5" style="text-align: center; padding: 36px; color: var(--danger);">
+                Unable to load your property reviews. Please ensure the backend server is running on port 8081.
+              </td>
+            </tr>
+          `;
+        }
+      }
+    }
+
+    function renderCustomerReviewsTable(reviews) {
+      const tbody = document.getElementById('userReviewsTableBody');
+      if (!tbody) return;
+
+      const list = Array.isArray(reviews) ? reviews : [];
+      if (list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" style="text-align: center; padding: 48px; color: var(--text-muted);">
+              You haven't submitted any reviews yet. Click <strong>"+ Add New Review"</strong> or browse properties to leave a review!
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = list.map(rev => {
+        const propTitle = rev.propertyTitle || ('Property #' + rev.propertyId);
+        const locationPart = rev.propertyLocation ? escapeHtml(rev.propertyLocation) : '';
+        const agentPart = rev.agentName ? `Agent: ${escapeHtml(rev.agentName)}` : '';
+        const subtext = [locationPart, agentPart].filter(Boolean).join(' &bull; ');
+
+        return `
+          <tr>
+            <td>
+              <div class="table-cell-bold">${escapeHtml(propTitle)}</div>
+              ${subtext ? `<div class="table-cell-sub">${subtext}</div>` : ''}
+            </td>
+            <td>
+              <span style="color: #F59E0B; font-weight: 700;">${renderStarsText(rev.rating)}</span>
+            </td>
+            <td style="max-width: 420px; line-height: 1.5;">
+              "${escapeHtml(rev.comment || '')}"
+            </td>
+            <td>${escapeHtml(rev.reviewDate || '-')}</td>
+            <td>
+              <div class="table-actions">
+                <button type="button" class="btn btn-outline btn-sm" onclick="openEditReviewModal(${rev.id})">Edit</button>
+                <button type="button" class="btn btn-outline btn-sm" style="color: var(--delete-dark-red);" onclick="openDeleteReviewModal(${rev.id})">Delete</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function openAddReviewModal() {
+      const form = document.getElementById('addUserReviewForm');
+      if (form) form.reset();
+      openModal('addReviewModal');
+    }
+
+    async function handleCreateUserReview(e) {
+      e.preventDefault();
+      const user = getCustomerAuth();
+      const username = user ? (user.username || user.email) : '';
+
+      const propId = document.getElementById('addReviewPropertySelect').value;
+      const rating = document.getElementById('addReviewRatingSelect').value;
+      const comment = document.getElementById('addReviewComment').value.trim();
+
+      if (!propId) {
+        showToast('Please select a property.', 'danger');
+        return;
+      }
+      if (!comment) {
+        showToast('Please write a review comment.', 'danger');
+        return;
+      }
+
+      const btn = document.getElementById('btnSubmitAddReview');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Submitting...';
+      }
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/reviews?customerUsername=${encodeURIComponent(username)}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            propertyId: Number(propId),
+            rating: Number(rating),
+            comment: comment,
+            customerUsername: username
+          })
+        });
+
+        if (res.ok) {
+          showToast('Review submitted successfully!', 'success');
+          closeModal('addReviewModal');
+          loadCustomerReviews();
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          showToast(errData.message || 'Failed to submit review.', 'danger');
+        }
+      } catch (err) {
+        console.error('Error creating review:', err);
+        showToast('Could not connect to backend server.', 'danger');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = 'Submit Review';
+        }
+      }
+    }
+
+    function openEditReviewModal(reviewId) {
+      const rev = customerReviews.find(r => r.id === reviewId);
+      if (!rev) return;
+
+      document.getElementById('editReviewId').value = rev.id;
+      document.getElementById('editReviewPropertyTitle').value = rev.propertyTitle || ('Property #' + rev.propertyId);
+      document.getElementById('editReviewRatingSelect').value = String(rev.rating || 5);
+      document.getElementById('editReviewComment').value = rev.comment || '';
+
+      openModal('editReviewModal');
+    }
+
+    async function handleUpdateUserReview(e) {
+      e.preventDefault();
+      const reviewId = document.getElementById('editReviewId').value;
+      const rating = document.getElementById('editReviewRatingSelect').value;
+      const comment = document.getElementById('editReviewComment').value.trim();
+
+      if (!reviewId) return;
+      if (!comment) {
+        showToast('Review comment cannot be empty.', 'danger');
+        return;
+      }
+
+      const user = getCustomerAuth();
+      const username = user ? (user.username || user.email) : '';
+
+      const btn = document.getElementById('btnSubmitEditReview');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Saving...';
+      }
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/reviews/${reviewId}?customerUsername=${encodeURIComponent(username)}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            rating: Number(rating),
+            comment: comment
+          })
+        });
+
+        if (res.ok) {
+          showToast('Review updated successfully!', 'success');
+          closeModal('editReviewModal');
+          loadCustomerReviews();
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          showToast(errData.message || 'Failed to update review.', 'danger');
+        }
+      } catch (err) {
+        console.error('Error updating review:', err);
+        showToast('Could not connect to backend server.', 'danger');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = 'Save Changes';
+        }
+      }
+    }
+
+    function openDeleteReviewModal(reviewId) {
+      document.getElementById('deleteReviewId').value = reviewId;
+      openModal('deleteReviewModal');
+    }
+
+    async function confirmDeleteUserReview() {
+      const reviewId = document.getElementById('deleteReviewId').value;
+      if (!reviewId) return;
+
+      const user = getCustomerAuth();
+      const username = user ? (user.username || user.email) : '';
+
+      const btn = document.getElementById('btnConfirmDeleteReview');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Deleting...';
+      }
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/reviews/${reviewId}?username=${encodeURIComponent(username)}`, {
+          method: 'DELETE'
+        });
+
+        if (res.ok) {
+          showToast('Review deleted successfully.', 'success');
+          closeModal('deleteReviewModal');
+          loadCustomerReviews();
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          showToast(errData.message || 'Failed to delete review.', 'danger');
+        }
+      } catch (err) {
+        console.error('Error deleting review:', err);
+        showToast('Could not connect to backend server.', 'danger');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = 'Delete Review';
+        }
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  </script>
+</body>
+</html>

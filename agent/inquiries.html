@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inquiry Management – EstateX Agent</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <!-- Agent Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+        <span class="role-badge-tag" style="background: rgba(189, 142, 137, 0.2); color: var(--secondary); border-color: var(--secondary);">Agent Portal</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-title">Agent Portal</div>
+        <a href="dashboard.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a>
+        <a href="../public/properties.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          Property Listings
+        </a>
+        <a href="add-property.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          Add Property
+        </a>
+        <a href="properties.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+          Manage Properties
+        </a>
+        <a href="inquiries.html" class="sidebar-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          Inquiries
+        </a>
+        <a href="bookings.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Bookings
+        </a>
+        <div class="sidebar-section-title">Personal</div>
+        <a href="profile.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="../public/login.html" class="sidebar-item" style="color: #F87171;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Logout
+        </a>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <div>
+            <div class="topbar-breadcrumb">Agent Portal &gt; Communications</div>
+            <h1 class="topbar-title">Customer Inquiries</h1>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="profile.html" class="topbar-user" title="Agent Profile">
+            <div class="user-avatar-circle">
+              <img id="agentTopbarAvatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" alt="Agent">
+            </div>
+          </a>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Search and Filter Toolbar -->
+        <div class="toolbar-container">
+          <div class="toolbar-filters">
+            <input type="text" id="agentInquirySearchInput" class="form-control" style="width: 290px;" placeholder="Search customer, property, message...">
+            <select id="agentInquiryStatusFilter" class="filter-select">
+              <option value="">All Statuses</option>
+              <option value="Pending">Pending</option>
+              <option value="Replied">Replied</option>
+            </select>
+          </div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            Total Inquiries: <strong id="agentInquiriesCount">Loading...</strong>
+          </div>
+        </div>
+
+        <!-- Inquiry Management Table -->
+        <div class="card" style="padding: 0;">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Inquiry ID</th>
+                  <th>Customer</th>
+                  <th>Property</th>
+                  <th>Message Snippet</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="agentInquiriesTableBody">
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 36px; color: var(--text-muted);">
+                    Loading customer inquiries from server...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+      <footer class="dashboard-footer">
+        <div>&copy; 2026 EstateX Property Portal. All rights reserved.</div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal: Reply to Inquiry -->
+  <div class="modal-overlay" id="replyInquiryModal">
+    <div class="modal-container modal-lg" style="max-width: 650px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <h3 class="modal-title" id="replyModalTitle">Inquiry Response</h3>
+          <span id="replyModalStatusBadge" class="badge badge-pending">Pending</span>
+        </div>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="agentReplyForm" onsubmit="submitAgentReply(event)">
+        <input type="hidden" id="replyModalInquiryId" value="">
+        <div class="modal-body" style="display: flex; flex-direction: column; gap: 16px;">
+          <!-- Customer & Property Details -->
+          <div style="background: var(--bg-cream-soft); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
+              <div>
+                <strong style="color: var(--primary-dark); font-size: 1.05rem;" id="modalCustomerName">Customer</strong>
+                <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px;" id="modalCustomerContact">-</div>
+              </div>
+              <div style="text-align: right;">
+                <span style="font-size: 0.85rem; font-weight: 700; color: var(--primary-dark);" id="modalPropertyRef">Property Title</span>
+                <div style="font-size: 0.8rem; color: var(--text-muted);" id="modalInquirySentDate">Sent: -</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer Message -->
+          <div style="padding: 14px; background: var(--bg-app); border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+            <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); margin-bottom: 6px;">Customer Inquiry:</div>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0; font-style: italic;" id="modalCustomerMsg">
+              "Customer message"
+            </p>
+          </div>
+
+          <!-- Existing Reply (if already replied) -->
+          <div id="modalExistingReplyBox" style="display: none; background: #F0FDF4; border: 1px solid #BBF7D0; padding: 14px; border-radius: var(--radius-sm);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <strong style="color: #166534; font-size: 0.85rem;">Your Sent Reply:</strong>
+              <span style="font-size: 0.75rem; color: #166534;" id="modalExistingReplyTime">-</span>
+            </div>
+            <p style="font-size: 0.9rem; color: #14532D; margin: 0; line-height: 1.5;" id="modalExistingReplyText">-</p>
+          </div>
+
+          <!-- Reply Text Box -->
+          <div class="form-group" style="margin-top: 4px;">
+            <label class="form-label" id="replyTextLabel">Your Professional Reply <span class="req">*</span></label>
+            <textarea class="form-control" rows="5" id="replyTextBox" placeholder="Type your response to the customer regarding title deeds, price negotiations, viewing slots, or loan valuations..." required></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" id="btnSubmitReply" class="btn btn-primary">Send Reply</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    const API_BASE_URL = window.API_BASE_URL || (window.location.port === '8081' ? '' : 'http://localhost:8081');
+
+    let allAgentInquiries = [];
+
+    function getLoggedInAgent() {
+      try {
+        const raw = sessionStorage.getItem('estatex_auth_user') || localStorage.getItem('estatex_auth_user');
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const agent = getLoggedInAgent();
+      if (agent && agent.profileImage) {
+        const avatarEl = document.getElementById('agentTopbarAvatar');
+        if (avatarEl) avatarEl.src = agent.profileImage;
+      }
+
+      await loadAgentInquiries();
+
+      const searchInput = document.getElementById('agentInquirySearchInput');
+      const statusFilter = document.getElementById('agentInquiryStatusFilter');
+      if (searchInput) searchInput.addEventListener('input', applyAgentFilters);
+      if (statusFilter) statusFilter.addEventListener('change', applyAgentFilters);
+    });
+
+    async function loadAgentInquiries() {
+      const agent = getLoggedInAgent();
+      const tbody = document.getElementById('agentInquiriesTableBody');
+      const usernameParam = agent ? (agent.username || agent.email) : '';
+
+      try {
+        const url = usernameParam
+          ? `${API_BASE_URL}/api/inquiries?agentUsername=${encodeURIComponent(usernameParam)}`
+          : `${API_BASE_URL}/api/inquiries`;
+
+        const res = await fetch(url);
+        if (res.ok) {
+          allAgentInquiries = await res.json();
+          applyAgentFilters();
+        } else {
+          tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 36px; color: var(--delete-dark-red);">Failed to retrieve inquiries from server.</td></tr>`;
+        }
+      } catch (err) {
+        console.warn('Backend unavailable:', err);
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 36px; color: var(--text-muted);">Could not connect to backend server. Make sure Spring Boot is running on port 8081.</td></tr>`;
+      }
+    }
+
+    function applyAgentFilters() {
+      const q = (document.getElementById('agentInquirySearchInput').value || '').trim().toLowerCase();
+      const st = (document.getElementById('agentInquiryStatusFilter').value || '').trim().toLowerCase();
+
+      const filtered = allAgentInquiries.filter(inq => {
+        const matchesStatus = !st || (inq.status && inq.status.toLowerCase() === st);
+        const matchesQuery = !q ||
+          (inq.inquiryCode && inq.inquiryCode.toLowerCase().includes(q)) ||
+          (inq.customerName && inq.customerName.toLowerCase().includes(q)) ||
+          (inq.customerEmail && inq.customerEmail.toLowerCase().includes(q)) ||
+          (inq.propertyTitle && inq.propertyTitle.toLowerCase().includes(q)) ||
+          (inq.message && inq.message.toLowerCase().includes(q)) ||
+          (inq.agentReply && inq.agentReply.toLowerCase().includes(q));
+        return matchesStatus && matchesQuery;
+      });
+
+      renderAgentInquiriesTable(filtered);
+    }
+
+    function renderAgentInquiriesTable(list) {
+      const tbody = document.getElementById('agentInquiriesTableBody');
+      const counter = document.getElementById('agentInquiriesCount');
+      if (counter) {
+        counter.textContent = `${list.length} Record${list.length === 1 ? '' : 's'}`;
+      }
+
+      if (!list || list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" style="text-align: center; padding: 48px; color: var(--text-muted);">
+              No inquiries found for your property listings.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = list.map(inq => {
+        const code = inq.inquiryCode || `#INQ-${inq.id}`;
+        const isReplied = (inq.status || '').toLowerCase() === 'replied';
+        const badgeClass = isReplied ? 'badge-approved' : 'badge-pending';
+        const statusLabel = isReplied ? 'Replied' : 'Pending';
+
+        let actionBtns = '';
+        if (isReplied) {
+          actionBtns = `
+            <button type="button" class="btn btn-outline btn-sm" onclick="openReplyModal(${inq.id})">View</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="openReplyModal(${inq.id})">Edit Reply</button>
+          `;
+        } else {
+          actionBtns = `
+            <button type="button" class="btn btn-outline btn-sm" onclick="openReplyModal(${inq.id})">View</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="openReplyModal(${inq.id})">Reply</button>
+          `;
+        }
+
+        return `
+          <tr>
+            <td><strong>${escapeHtml(code)}</strong></td>
+            <td>
+              <div class="table-cell-bold">${escapeHtml(inq.customerName || 'Customer')}</div>
+              <div class="table-cell-sub">
+                ${escapeHtml(inq.customerEmail || 'No email')}
+                ${inq.customerPhone ? ' &bull; ' + escapeHtml(inq.customerPhone) : ''}
+              </div>
+            </td>
+            <td>${escapeHtml(inq.propertyTitle || 'Property #' + inq.propertyId)}</td>
+            <td style="max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${escapeHtml(inq.message || '')}">
+              ${escapeHtml(inq.message || '')}
+            </td>
+            <td>${escapeHtml(inq.sentDate || '-')}</td>
+            <td><span class="badge ${badgeClass}">${escapeHtml(statusLabel)}</span></td>
+            <td>
+              <div class="table-actions">
+                ${actionBtns}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function openReplyModal(id) {
+      const inq = allAgentInquiries.find(x => x.id === id);
+      if (!inq) return;
+
+      const code = inq.inquiryCode || `#INQ-${inq.id}`;
+      const isReplied = (inq.status || '').toLowerCase() === 'replied';
+
+      document.getElementById('replyModalInquiryId').value = inq.id;
+      document.getElementById('replyModalTitle').textContent = `Reply to Inquiry ${code}`;
+
+      const badgeEl = document.getElementById('replyModalStatusBadge');
+      badgeEl.className = `badge ${isReplied ? 'badge-approved' : 'badge-pending'}`;
+      badgeEl.textContent = isReplied ? 'Replied' : 'Pending';
+
+      document.getElementById('modalCustomerName').textContent = inq.customerName || 'Customer';
+      document.getElementById('modalCustomerContact').textContent = `${inq.customerEmail || 'No email'}${inq.customerPhone ? ' • ' + inq.customerPhone : ''}`;
+      document.getElementById('modalPropertyRef').textContent = inq.propertyTitle || ('Property #' + inq.propertyId);
+      document.getElementById('modalInquirySentDate').textContent = `Sent on: ${inq.sentDate || 'Recent'}`;
+      document.getElementById('modalCustomerMsg').textContent = `"${inq.message || ''}"`;
+
+      const existingBox = document.getElementById('modalExistingReplyBox');
+      const replyLabel = document.getElementById('replyTextLabel');
+      const submitBtn = document.getElementById('btnSubmitReply');
+
+      if (isReplied && inq.agentReply) {
+        existingBox.style.display = 'block';
+        document.getElementById('modalExistingReplyTime').textContent = inq.repliedDate || 'Recently';
+        document.getElementById('modalExistingReplyText').textContent = inq.agentReply;
+        document.getElementById('replyTextBox').value = inq.agentReply;
+        replyLabel.innerHTML = 'Update Your Reply <span class="req">*</span>';
+        submitBtn.textContent = 'Update Reply';
+      } else {
+        existingBox.style.display = 'none';
+        document.getElementById('replyTextBox').value = '';
+        replyLabel.innerHTML = 'Your Professional Reply <span class="req">*</span>';
+        submitBtn.textContent = 'Send Reply';
+      }
+
+      openModal('replyInquiryModal');
+    }
+
+    async function submitAgentReply(e) {
+      e.preventDefault();
+      const inqId = document.getElementById('replyModalInquiryId').value;
+      const reply = document.getElementById('replyTextBox').value.trim();
+
+      if (!inqId) {
+        showToast('Inquiry ID missing.', 'danger');
+        return;
+      }
+      if (!reply) {
+        showToast('Please type your reply before submitting.', 'danger');
+        return;
+      }
+
+      const agent = getLoggedInAgent();
+      const usernameParam = agent ? (agent.username || agent.email) : '';
+
+      const btn = document.getElementById('btnSubmitReply');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        const url = usernameParam
+          ? `${API_BASE_URL}/api/inquiries/${inqId}/reply?agentUsername=${encodeURIComponent(usernameParam)}`
+          : `${API_BASE_URL}/api/inquiries/${inqId}/reply`;
+
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ reply: reply })
+        });
+
+        if (res.ok) {
+          showToast('Reply sent to customer inbox successfully!', 'success');
+          closeModal('replyInquiryModal');
+          await loadAgentInquiries();
+        } else {
+          const errData = await res.json().catch(() => ({}));
+          showToast(errData.message || 'Failed to send reply.', 'danger');
+        }
+      } catch (err) {
+        console.error('Error replying to inquiry:', err);
+        showToast('Could not connect to backend server.', 'danger');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Send Reply';
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  </script>
+</body>
+</html>

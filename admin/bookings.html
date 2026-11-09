@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Management – EstateX Admin</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <!-- Admin Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+        <span class="role-badge-tag" style="background: rgba(14, 22, 39, 0.4); color: var(--primary-light); border-color: rgba(255,237,216,0.3);">Admin Portal</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-title">Administration</div>
+        <a href="dashboard.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a>
+        <a href="users.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          User Management
+        </a>
+        <a href="agents.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          Agent Management
+        </a>
+        <a href="properties.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          Property Management
+        </a>
+        <a href="bookings.html" class="sidebar-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Booking Management
+        </a>
+        <a href="reviews.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          Review Management
+        </a>
+        <div class="sidebar-section-title">System</div>
+        <a href="profile.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="../public/login.html" class="sidebar-item" style="color: #F87171;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Logout
+        </a>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <div>
+            <div class="topbar-breadcrumb">Administrator &gt; Appointments</div>
+            <h1 class="topbar-title">Manage Bookings</h1>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="profile.html" class="topbar-user" title="Admin Profile">
+            <div class="user-avatar-circle" style="background: var(--primary-dark); color: var(--primary-light);">
+              ADM
+            </div>
+          </a>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Search and Filter Toolbar -->
+        <div class="toolbar-container">
+          <div class="toolbar-filters">
+            <input type="text" id="adminBookingSearchInput" class="form-control" style="width: 290px;" placeholder="Search booking, customer, property, agent...">
+            
+            <select id="adminBookingStatusFilter" class="filter-select">
+              <option value="">All Statuses</option>
+              <option value="Pending">Pending</option>
+              <option value="Approved">Approved</option>
+              <option value="Completed">Completed</option>
+              <option value="Rejected">Rejected</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            Total Bookings: <strong id="adminBookingsCount">Loading...</strong>
+          </div>
+        </div>
+
+        <!-- Manage Bookings Table (View-Only for Administrator) -->
+        <div class="card" style="padding: 0;">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Customer</th>
+                  <th>Property</th>
+                  <th>Agent</th>
+                  <th>Booking Date</th>
+                  <th>Viewing Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminBookingsTableBody">
+                <tr>
+                  <td colspan="8" style="text-align: center; padding: 36px; color: var(--text-muted);">
+                    Loading viewing appointments from server...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+      <footer class="dashboard-footer">
+        <div>&copy; 2026 EstateX Property Portal. All rights reserved.</div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal: View Booking Details (Read-Only for Admin) -->
+  <div class="modal-overlay" id="adminViewBookingModal">
+    <div class="modal-container" style="max-width: 640px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <h3 class="modal-title" id="viewModalBookingCode">#BK-0000</h3>
+          <span id="viewModalStatusBadge" class="badge badge-pending">Pending</span>
+        </div>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: 16px; max-height: 75vh; overflow-y: auto;">
+        <!-- Customer Info Card -->
+        <div style="padding: 14px; background: var(--bg-cream-soft); border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+          <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 700; margin-bottom: 6px;">Customer Details</div>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <div id="viewModalCustomerName" style="font-size: 1.1rem; font-weight: 800; color: var(--primary-dark);">-</div>
+              <div id="viewModalCustomerEmail" style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px;">-</div>
+            </div>
+            <div id="viewModalCustomerPhone" style="font-weight: 700; color: var(--accent-dark); font-size: 0.95rem;">-</div>
+          </div>
+        </div>
+
+        <!-- Property Info Card -->
+        <div style="padding: 14px; background: var(--bg-app); border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+          <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 700;">Property Information</div>
+          <div id="viewModalPropertyTitle" style="font-size: 1.05rem; font-weight: 700; color: var(--primary-dark); margin-top: 4px;">-</div>
+          <div id="viewModalPropertySub" style="font-size: 0.85rem; color: var(--secondary); margin-top: 2px;">-</div>
+        </div>
+
+        <!-- Agent Info Card -->
+        <div style="padding: 14px; background: var(--bg-cream-soft); border-radius: var(--radius-sm); border: 1px solid var(--border-light);">
+          <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 700; margin-bottom: 6px;">Assigned Agent</div>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <div id="viewModalAgentName" style="font-size: 1.05rem; font-weight: 700; color: var(--primary-dark);">-</div>
+              <div id="viewModalAgentEmail" style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px;">-</div>
+            </div>
+            <div id="viewModalAgentPhone" style="font-weight: 700; color: var(--accent-dark); font-size: 0.95rem;">-</div>
+          </div>
+        </div>
+
+        <!-- Schedule Info Grid -->
+        <div class="form-grid-2" style="gap: 14px;">
+          <div style="padding: 12px; background: var(--bg-app); border-radius: var(--radius-sm);">
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Scheduled Viewing Date</div>
+            <div id="viewModalViewingDate" style="font-weight: 700; font-size: 0.95rem; color: var(--primary-dark); margin-top: 4px;">-</div>
+          </div>
+          <div style="padding: 12px; background: var(--bg-app); border-radius: var(--radius-sm);">
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Time Slot</div>
+            <div id="viewModalTimeSlot" style="font-weight: 700; font-size: 0.95rem; color: var(--primary-dark); margin-top: 4px;">-</div>
+          </div>
+        </div>
+
+        <!-- Customer Notes -->
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px;">Customer Notes / Special Requests</div>
+          <div id="viewModalCustomerNotes" style="font-size: 0.9rem; color: var(--text-secondary); padding: 12px; background: var(--bg-cream-soft); border-radius: var(--radius-sm); border: 1px solid var(--border-light); font-style: italic;">
+            No specific note provided.
+          </div>
+        </div>
+
+        <!-- Notice / Reason Container (conditional) -->
+        <div id="viewModalReasonContainer" style="display: none; padding: 12px; background: #FEE2E2; border-radius: var(--radius-sm); border: 1px solid #FCA5A5;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: var(--delete-dark-red); margin-bottom: 2px;">Notice / Reason</div>
+          <div id="viewModalReasonText" style="font-size: 0.9rem; color: var(--delete-dark-red);"></div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+        <span id="viewModalBookingCreated" style="font-size: 0.8rem; color: var(--text-muted);">Booked on: -</span>
+        <button type="button" class="btn btn-outline btn-sm" data-modal-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    const API_BASE_URL = window.API_BASE_URL || (window.location.port === '8081' ? '' : 'http://localhost:8081');
+
+    let allAdminBookings = [];
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadAdminBookings();
+
+      const searchInput = document.getElementById('adminBookingSearchInput');
+      const statusFilter = document.getElementById('adminBookingStatusFilter');
+      if (searchInput) searchInput.addEventListener('input', applyAdminFilters);
+      if (statusFilter) statusFilter.addEventListener('change', applyAdminFilters);
+    });
+
+    async function loadAdminBookings() {
+      const tbody = document.getElementById('adminBookingsTableBody');
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/bookings`);
+        if (res.ok) {
+          allAdminBookings = await res.json();
+          applyAdminFilters();
+        } else {
+          tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 36px; color: var(--delete-dark-red);">Failed to retrieve bookings from server.</td></tr>`;
+        }
+      } catch (err) {
+        console.warn('Backend unavailable, error:', err);
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 36px; color: var(--text-muted);">Could not connect to backend server. Make sure Spring Boot is running on port 8081.</td></tr>`;
+      }
+    }
+
+    function applyAdminFilters() {
+      const q = (document.getElementById('adminBookingSearchInput').value || '').trim().toLowerCase();
+      const st = (document.getElementById('adminBookingStatusFilter').value || '').trim().toLowerCase();
+
+      const filtered = allAdminBookings.filter(b => {
+        const matchesStatus = !st || (b.status && b.status.toLowerCase() === st);
+        const matchesQuery = !q ||
+          (b.bookingCode && b.bookingCode.toLowerCase().includes(q)) ||
+          (String(b.id).includes(q)) ||
+          (b.customerName && b.customerName.toLowerCase().includes(q)) ||
+          (b.customerEmail && b.customerEmail.toLowerCase().includes(q)) ||
+          (b.propertyTitle && b.propertyTitle.toLowerCase().includes(q)) ||
+          (b.agentName && b.agentName.toLowerCase().includes(q));
+        return matchesStatus && matchesQuery;
+      });
+
+      renderAdminBookingsTable(filtered);
+    }
+
+    function renderAdminBookingsTable(list) {
+      const tbody = document.getElementById('adminBookingsTableBody');
+      const counter = document.getElementById('adminBookingsCount');
+      if (counter) {
+        counter.textContent = `${list.length} Record${list.length === 1 ? '' : 's'}`;
+      }
+
+      if (!list || list.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="8" style="text-align: center; padding: 48px; color: var(--text-muted);">
+              No viewing appointments found.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = list.map(b => {
+        const code = b.bookingCode || `#BK-${b.id}`;
+        const rawStatus = (b.status || 'Pending').trim();
+        const statusLower = rawStatus.toLowerCase();
+
+        let badgeClass = 'badge-pending';
+        if (statusLower === 'approved') badgeClass = 'badge-approved';
+        else if (statusLower === 'completed') badgeClass = 'badge-completed';
+        else if (statusLower === 'rejected') badgeClass = 'badge-rejected';
+        else if (statusLower === 'cancelled') badgeClass = 'badge-cancelled';
+
+        const viewingSchedule = `${escapeHtml(b.viewingDate || '-')}${b.timeSlot ? ' (' + escapeHtml(b.timeSlot) + ')' : ''}`;
+
+        return `
+          <tr>
+            <td><strong>${escapeHtml(code)}</strong></td>
+            <td>
+              <div class="table-cell-bold">${escapeHtml(b.customerName || 'Customer')}</div>
+              ${b.customerPhone || b.customerEmail ? `<div class="table-cell-sub">${escapeHtml(b.customerPhone || b.customerEmail)}</div>` : ''}
+            </td>
+            <td>
+              <div class="table-cell-bold">${escapeHtml(b.propertyTitle || ('Property #' + b.propertyId))}</div>
+              ${b.propertyLocation ? `<div class="table-cell-sub">${escapeHtml(b.propertyLocation)}</div>` : ''}
+            </td>
+            <td>
+              <div class="table-cell-bold">${escapeHtml(b.agentName || 'Unassigned')}</div>
+              ${b.agentPhone ? `<div class="table-cell-sub">${escapeHtml(b.agentPhone)}</div>` : ''}
+            </td>
+            <td>${escapeHtml(b.bookingDate || '-')}</td>
+            <td>${viewingSchedule}</td>
+            <td><span class="badge ${badgeClass}">${escapeHtml(rawStatus)}</span></td>
+            <td>
+              <div class="table-actions">
+                <button type="button" class="btn btn-outline btn-sm" onclick="viewAdminBookingDetails(${b.id})">View</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function viewAdminBookingDetails(bookingId) {
+      const b = allAdminBookings.find(x => x.id === bookingId);
+      if (!b) return;
+
+      const code = b.bookingCode || `#BK-${b.id}`;
+      document.getElementById('viewModalBookingCode').textContent = code;
+
+      const rawStatus = (b.status || 'Pending').trim();
+      const statusLower = rawStatus.toLowerCase();
+      let badgeClass = 'badge-pending';
+      if (statusLower === 'approved') badgeClass = 'badge-approved';
+      else if (statusLower === 'completed') badgeClass = 'badge-completed';
+      else if (statusLower === 'rejected') badgeClass = 'badge-rejected';
+      else if (statusLower === 'cancelled') badgeClass = 'badge-cancelled';
+
+      const badgeEl = document.getElementById('viewModalStatusBadge');
+      badgeEl.className = `badge ${badgeClass}`;
+      badgeEl.textContent = rawStatus;
+
+      // Customer
+      document.getElementById('viewModalCustomerName').textContent = b.customerName || 'Customer';
+      document.getElementById('viewModalCustomerEmail').textContent = b.customerEmail || 'No email provided';
+      document.getElementById('viewModalCustomerPhone').textContent = b.customerPhone || 'No phone provided';
+
+      // Property
+      document.getElementById('viewModalPropertyTitle').textContent = b.propertyTitle || ('Property #' + b.propertyId);
+      const propSub = [
+        b.propertyLocation || b.propertyAddress || '',
+        b.propertyPrice ? ('LKR ' + Number(b.propertyPrice).toLocaleString()) : '',
+        b.propertyListingType ? ('For ' + b.propertyListingType.toUpperCase()) : ''
+      ].filter(Boolean).join(' • ');
+      document.getElementById('viewModalPropertySub').textContent = propSub || 'Property details on record';
+
+      // Agent
+      document.getElementById('viewModalAgentName').textContent = b.agentName || 'Unassigned';
+      document.getElementById('viewModalAgentEmail').textContent = b.agentEmail || 'No agent email';
+      document.getElementById('viewModalAgentPhone').textContent = b.agentPhone || 'No agent phone';
+
+      // Viewing Schedule
+      document.getElementById('viewModalViewingDate').textContent = b.viewingDate || '-';
+      document.getElementById('viewModalTimeSlot').textContent = b.timeSlot || '10:00 AM';
+
+      // Notes
+      const notesEl = document.getElementById('viewModalCustomerNotes');
+      if (b.notes && b.notes.trim()) {
+        notesEl.textContent = b.notes;
+        notesEl.style.fontStyle = 'normal';
+      } else {
+        notesEl.textContent = 'No specific customer note provided.';
+        notesEl.style.fontStyle = 'italic';
+      }
+
+      // Reason container
+      const reasonBox = document.getElementById('viewModalReasonContainer');
+      const reasonText = document.getElementById('viewModalReasonText');
+      if (b.reason && b.reason.trim()) {
+        reasonBox.style.display = 'block';
+        reasonText.textContent = b.reason;
+      } else {
+        reasonBox.style.display = 'none';
+        reasonText.textContent = '';
+      }
+
+      // Booking Created
+      document.getElementById('viewModalBookingCreated').textContent = `Booked on: ${b.bookingDate || (b.createdAt ? b.createdAt.substring(0, 10) : 'Recent')}`;
+
+      openModal('adminViewBookingModal');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management – EstateX Admin</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body><div class="dashboard-layout">
+    <!-- Admin Sidebar -->
+    <aside class="dashboard-sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="brand-logo">
+          <img src="../assets/images/logo.webp" alt="EstateX Logo">
+          <span>EstateX</span>
+        </a>
+        <span class="role-badge-tag" style="background: rgba(14, 22, 39, 0.4); color: var(--primary-light); border-color: rgba(255,237,216,0.3);">Admin Portal</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-title">Administration</div>
+        <a href="dashboard.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a>
+        <a href="users.html" class="sidebar-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          User Management
+        </a>
+        <a href="agents.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          Agent Management
+        </a>
+        <a href="properties.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          Property Management
+        </a>
+        <a href="bookings.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Booking Management
+        </a>
+        <a href="reviews.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          Review Management
+        </a>
+        <div class="sidebar-section-title">System</div>
+        <a href="profile.html" class="sidebar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="../public/login.html" class="sidebar-item" style="color: #F87171;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Logout
+        </a>
+      </div>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <div>
+            <div class="topbar-breadcrumb">Administrator &gt; Access Control</div>
+            <h1 class="topbar-title">Manage Users</h1>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Button: Add New User (Section 16) -->
+          <button class="btn btn-primary btn-sm" data-modal-target="addUserModal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Add New User
+          </button>
+          <a href="profile.html" class="topbar-user" title="Admin Profile">
+            <div class="user-avatar-circle" style="background: var(--primary-dark); color: var(--primary-light);">
+              ADM
+            </div>
+          </a>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <!-- Search and Filter Bar (Section 16: Search bar at top, Filters: Role, Status) -->
+        <div class="toolbar-container">
+          <div class="toolbar-filters">
+            <input type="text" id="userSearchInput" class="form-control" style="width: 280px;" placeholder="Search by name, email or phone...">
+            
+            <!-- Role Filter: User, Agent, Admin -->
+            <select id="userRoleFilter" class="filter-select">
+              <option value="">All Roles</option>
+              <option value="CUSTOMER">Customer / User</option>
+              <option value="AGENT">Agent</option>
+              <option value="ADMIN">Admin</option>
+            </select>
+
+            <!-- Status Filter -->
+            <select id="userStatusFilter" class="filter-select">
+              <option value="">All Statuses</option>
+              <option value="Active">Active</option>
+              <option value="Suspended">Suspended</option>
+              <option value="Pending">Pending</option>
+            </select>
+          </div>
+
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            Total Users: <strong id="totalUsersCount">Loading...</strong>
+          </div>
+        </div>
+
+        <!-- Users Table (Section 16: User ID, Name, Email, Phone, Role, Status, Actions) -->
+        <div class="card" style="padding: 0;">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>User ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody">
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 32px; color: var(--text-muted);">
+                    Loading registered users from database...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+      <footer class="dashboard-footer">
+        <div>&copy; 2026 EstateX Property Portal. All rights reserved.</div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Modal: View User Details -->
+  <div class="modal-overlay" id="viewUserModal">
+    <div class="modal-container" style="max-width: 560px;">
+      <div class="modal-header">
+        <h3 class="modal-title">User Account Details</h3>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <div class="modal-body" id="viewUserContent">
+        <!-- Rendered dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-modal-close>Close</button>
+        <button type="button" id="viewUserEditBtn" class="btn btn-primary">Edit User</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Add User -->
+  <div class="modal-overlay" id="addUserModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Add New User</h3>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="addUserForm" onsubmit="handleAddUser(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Full Name <span class="req">*</span></label>
+            <input type="text" id="add-fullName" class="form-control" required placeholder="e.g. Kasun Kalhara">
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Email <span class="req">*</span></label>
+              <input type="email" id="add-email" class="form-control" required placeholder="user@estatex.lk">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone <span class="req">*</span></label>
+              <input type="tel" id="add-phone" class="form-control" required placeholder="+94 77 123 4567">
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Role <span class="req">*</span></label>
+              <select id="add-role" class="form-control" required>
+                <option value="CUSTOMER">Customer / User</option>
+                <option value="AGENT">Agent</option>
+                <option value="ADMIN">Admin</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status <span class="req">*</span></label>
+              <select id="add-status" class="form-control" required>
+                <option value="Active">Active</option>
+                <option value="Pending">Pending</option>
+                <option value="Suspended">Suspended</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Agency Affiliation / Address</label>
+            <input type="text" id="add-address" class="form-control" placeholder="Agency name for Agent, or residential address">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Temporary Password <span class="req">*</span></label>
+            <input type="password" id="add-password" class="form-control" required placeholder="Minimum 6 characters">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" id="addUserSubmitBtn" class="btn btn-primary">Add User</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Update User -->
+  <div class="modal-overlay" id="editUserModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Update User Record</h3>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <form id="editUserForm" onsubmit="handleEditUser(event)">
+        <input type="hidden" id="edit-username">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Full Name <span class="req">*</span></label>
+            <input type="text" id="edit-fullName" class="form-control" required>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Email <span class="req">*</span></label>
+              <input type="email" id="edit-email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone <span class="req">*</span></label>
+              <input type="tel" id="edit-phone" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Role <span class="req">*</span></label>
+              <select id="edit-role" class="form-control" required>
+                <option value="CUSTOMER">Customer / User</option>
+                <option value="AGENT">Agent</option>
+                <option value="ADMIN">Admin</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status <span class="req">*</span></label>
+              <select id="edit-status" class="form-control">
+                <option value="Active" selected>Active</option>
+                <option value="Pending">Pending</option>
+                <option value="Suspended">Suspended</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Agency Affiliation / Address</label>
+            <input type="text" id="edit-address" class="form-control" placeholder="Agency or office / residential address">
+          </div>
+          <div class="form-group">
+            <label class="form-label">New Password <span style="font-weight: 400; color: var(--text-muted);">(Optional - leave blank to keep unchanged)</span></label>
+            <input type="password" id="edit-password" class="form-control" placeholder="Minimum 6 characters if updating">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+          <button type="submit" id="editUserSubmitBtn" class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Delete User Confirmation -->
+  <div class="modal-overlay" id="deleteUserModal">
+    <div class="modal-container">
+      <div class="modal-header" style="background: #FEE2E2;">
+        <h3 class="modal-title" style="color: var(--delete-dark-red);">Delete User Account?</h3>
+        <button class="modal-close" data-modal-close>&times;</button>
+      </div>
+      <div class="modal-body">
+        <p id="deleteUserPrompt" style="font-weight: 600; margin-bottom: 8px;">Are you sure you want to delete this user?</p>
+        <p>This action will permanently purge the user account from the MySQL database and cascade delete all related appointments, inquiries, and properties.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-modal-close>Cancel</button>
+        <button type="button" id="confirmDeleteUserBtn" class="btn btn-danger" onclick="confirmDeleteUser();">Permanently Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    const API_BASE_URL = window.location.port === '8081' ? '' : 'http://localhost:8081';
+    let allUsers = [];
+    let deleteTargetIdentifier = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      syncAdminHeader();
+      loadUsers();
+
+      // Search & filter listeners (live instant search)
+      document.getElementById('userSearchInput').addEventListener('input', filterAndRenderUsers);
+      document.getElementById('userRoleFilter').addEventListener('change', filterAndRenderUsers);
+      document.getElementById('userStatusFilter').addEventListener('change', filterAndRenderUsers);
+    });
+
+    function syncAdminHeader() {
+      const auth = getAuthUser();
+      if (!auth) return;
+      const avatarCircle = document.querySelector('.topbar-user .user-avatar-circle');
+      if (avatarCircle) {
+        if (auth.profileImage) {
+          avatarCircle.innerHTML = `<img src="${auth.profileImage}" alt="ADM" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">`;
+        } else {
+          avatarCircle.textContent = (auth.fullName || auth.username || 'ADM').substring(0, 3).toUpperCase();
+        }
+      }
+    }
+
+    async function loadUsers() {
+      const tbody = document.getElementById('usersTableBody');
+      const counter = document.getElementById('totalUsersCount');
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/users`);
+        if (res.ok) {
+          allUsers = await res.json();
+          filterAndRenderUsers();
+        } else {
+          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 24px; color: var(--delete-dark-red);">Failed to load users from server.</td></tr>`;
+        }
+      } catch (err) {
+        console.warn('Backend unavailable, using simulated data.', err);
+        allUsers = [
+          { id: 1, fullName: 'Master Administrator', username: 'admin@admin', email: 'admin@estatex.lk', phone: '+94 11 234 5678', role: 'ADMIN', address: 'EstateX HQ Colombo' },
+          { id: 2, fullName: 'Chaminda Wijesekara', username: 'agent@agent', email: 'chaminda@estatex.lk', phone: '+94 77 345 6789', role: 'AGENT', address: 'Premier Coastal Realty Ltd', propertyCount: 12 },
+          { id: 3, fullName: 'Dilshan Perera', username: 'dilshan@user', email: 'dilshan.perera@gmail.com', phone: '+94 77 912 3456', role: 'CUSTOMER', address: 'Colombo 07' }
+        ];
+        filterAndRenderUsers();
+      }
+    }
+
+    function filterAndRenderUsers() {
+      const q = (document.getElementById('userSearchInput').value || '').trim().toLowerCase();
+      const roleFilter = document.getElementById('userRoleFilter').value;
+      const statusFilter = document.getElementById('userStatusFilter').value;
+
+      const filtered = allUsers.filter(u => {
+        const matchesQuery = !q ||
+          (u.fullName && u.fullName.toLowerCase().includes(q)) ||
+          (u.email && u.email.toLowerCase().includes(q)) ||
+          (u.username && u.username.toLowerCase().includes(q)) ||
+          (u.phone && u.phone.toLowerCase().includes(q)) ||
+          (u.address && u.address.toLowerCase().includes(q));
+
+        const matchesRole = !roleFilter || (u.role === roleFilter);
+        const userStatus = (u.status || 'Active').toLowerCase();
+        const matchesStatus = !statusFilter || (userStatus === statusFilter.toLowerCase());
+        return matchesQuery && matchesRole && matchesStatus;
+      });
+
+      renderUsersTable(filtered);
+    }
+
+    function renderUsersTable(users) {
+      const tbody = document.getElementById('usersTableBody');
+      const counter = document.getElementById('totalUsersCount');
+
+      counter.textContent = `${users.length} Record${users.length === 1 ? '' : 's'}`;
+
+      if (users.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 32px; color: var(--text-muted);">No matching users found.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = users.map(u => {
+        const role = u.role || 'CUSTOMER';
+        let badgeClass = 'badge-role-user';
+        let roleLabel = 'Customer';
+        let prefix = 'USR';
+
+        if (role === 'ADMIN') {
+          badgeClass = 'badge-role-admin';
+          roleLabel = 'Admin';
+          prefix = 'ADM';
+        } else if (role === 'AGENT') {
+          badgeClass = 'badge-role-agent';
+          roleLabel = 'Agent';
+          prefix = 'AGT';
+        }
+
+        const userStatus = u.status || 'Active';
+        let statusBadgeClass = 'badge-approved';
+        if (userStatus.toLowerCase() === 'pending') {
+          statusBadgeClass = 'badge-pending';
+        } else if (userStatus.toLowerCase() === 'suspended') {
+          statusBadgeClass = 'badge-rejected';
+        }
+
+        const formattedId = `#${prefix}-${String(u.id || 0).padStart(4, '0')}`;
+        const avatarSrc = u.profileImage ? u.profileImage : '';
+
+        return `
+          <tr>
+            <td><strong>${formattedId}</strong></td>
+            <td class="table-cell-bold">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                ${avatarSrc 
+                  ? `<img src="${avatarSrc}" alt="" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-light);">` 
+                  : `<div style="width: 32px; height: 32px; border-radius: 50%; background: var(--border-light); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">${(u.fullName || u.username || 'U').charAt(0).toUpperCase()}</div>`
+                }
+                <div>
+                  <div>${escapeHtml(u.fullName || u.username)}</div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 400;">${escapeHtml(u.username)}</div>
+                </div>
+              </div>
+            </td>
+            <td>${escapeHtml(u.email || '-')}</td>
+            <td>${escapeHtml(u.phone || '-')}</td>
+            <td><span class="badge ${badgeClass}">${roleLabel}</span></td>
+            <td><span class="badge ${statusBadgeClass}">${escapeHtml(userStatus)}</span></td>
+            <td>
+              <div class="table-actions">
+                <button type="button" class="btn btn-outline btn-sm" onclick="viewUserDetails('${escapeHtml(u.username)}')">View</button>
+                <button type="button" class="btn btn-outline btn-sm" onclick="openEditModal('${escapeHtml(u.username)}')">Update</button>
+                <button type="button" class="btn btn-outline btn-sm" style="color: var(--delete-dark-red);" onclick="openDeleteModal('${escapeHtml(u.username)}', '${escapeHtml(u.fullName || u.username)}')">Delete</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function handleAddUser(e) {
+      e.preventDefault();
+      const btn = document.getElementById('addUserSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Adding...';
+
+      const payload = {
+        fullName: document.getElementById('add-fullName').value.trim(),
+        email: document.getElementById('add-email').value.trim(),
+        phone: document.getElementById('add-phone').value.trim(),
+        password: document.getElementById('add-password').value,
+        role: document.getElementById('add-role').value,
+        status: document.getElementById('add-status').value,
+        address: document.getElementById('add-address').value.trim()
+      };
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/users`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          showToast('User created successfully in database!', 'success');
+          closeModal('addUserModal');
+          document.getElementById('addUserForm').reset();
+          loadUsers();
+        } else {
+          const err = await res.json().catch(() => ({}));
+          showToast(err.message || 'Failed to create user.', 'danger');
+        }
+      } catch (err) {
+        showToast('Backend unavailable, could not create user.', 'danger');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Add User';
+      }
+    }
+
+    function openEditModal(username) {
+      const user = allUsers.find(u => u.username === username);
+      if (!user) return;
+
+      document.getElementById('edit-username').value = user.username;
+      document.getElementById('edit-fullName').value = user.fullName || '';
+      document.getElementById('edit-email').value = user.email || '';
+      document.getElementById('edit-phone').value = user.phone || '';
+      document.getElementById('edit-role').value = user.role || 'CUSTOMER';
+      document.getElementById('edit-status').value = user.status || 'Active';
+      document.getElementById('edit-address').value = user.address || '';
+      document.getElementById('edit-password').value = '';
+
+      openModal('editUserModal');
+    }
+
+    async function handleEditUser(e) {
+      e.preventDefault();
+      const btn = document.getElementById('editUserSubmitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Saving...';
+
+      const username = document.getElementById('edit-username').value;
+      const payload = {
+        fullName: document.getElementById('edit-fullName').value.trim(),
+        email: document.getElementById('edit-email').value.trim(),
+        phone: document.getElementById('edit-phone').value.trim(),
+        role: document.getElementById('edit-role').value,
+        status: document.getElementById('edit-status').value,
+        address: document.getElementById('edit-address').value.trim()
+      };
+
+      const pass = document.getElementById('edit-password').value;
+      if (pass && pass.trim().length >= 6) {
+        payload.password = pass.trim();
+      }
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/users/${encodeURIComponent(username)}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          showToast('User details updated successfully in database!', 'success');
+          closeModal('editUserModal');
+          loadUsers();
+        } else {
+          const err = await res.json().catch(() => ({}));
+          showToast(err.message || 'Failed to update user record.', 'danger');
+        }
+      } catch (err) {
+        showToast('Backend unavailable, could not update user.', 'danger');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Save Changes';
+      }
+    }
+
+    function openDeleteModal(username, fullName) {
+      const activeUser = getAuthUser();
+      if (activeUser && (activeUser.username === username || activeUser.email === username)) {
+        showToast('You cannot delete your own active Admin account.', 'danger');
+        return;
+      }
+
+      deleteTargetIdentifier = username;
+      document.getElementById('deleteUserPrompt').textContent = `Are you sure you want to permanently delete user: ${fullName} (${username})?`;
+      openModal('deleteUserModal');
+    }
+
+    async function confirmDeleteUser() {
+      if (!deleteTargetIdentifier) return;
+      
+      const activeUser = getAuthUser();
+      if (activeUser && (activeUser.username === deleteTargetIdentifier || activeUser.email === deleteTargetIdentifier)) {
+        showToast('You cannot delete your own active Admin account.', 'danger');
+        closeModal('deleteUserModal');
+        return;
+      }
+
+      const btn = document.getElementById('confirmDeleteUserBtn');
+      btn.disabled = true;
+      btn.textContent = 'Deleting...';
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/api/users/${encodeURIComponent(deleteTargetIdentifier)}`, {
+          method: 'DELETE'
+        });
+
+        if (res.ok) {
+          showToast('User account successfully deleted from database.', 'danger');
+          closeModal('deleteUserModal');
+          deleteTargetIdentifier = null;
+          loadUsers();
+        } else {
+          const err = await res.json().catch(() => ({}));
+          showToast(err.message || 'Failed to delete user account.', 'danger');
+        }
+      } catch (err) {
+        showToast('Backend unreachable, could not delete user.', 'danger');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Permanently Delete';
+      }
+    }
+
+    function viewUserDetails(username) {
+      const user = allUsers.find(u => u.username === username);
+      if (!user) return;
+
+      const role = user.role || 'CUSTOMER';
+      let badgeClass = 'badge-role-user';
+      let roleLabel = 'Customer';
+      let prefix = 'USR';
+
+      if (role === 'ADMIN') {
+        badgeClass = 'badge-role-admin';
+        roleLabel = 'Admin';
+        prefix = 'ADM';
+      } else if (role === 'AGENT') {
+        badgeClass = 'badge-role-agent';
+        roleLabel = 'Agent';
+        prefix = 'AGT';
+      }
+
+      const formattedId = `#${prefix}-${String(user.id || 0).padStart(4, '0')}`;
+      const avatarSrc = user.profileImage || '';
+      const userStatus = user.status || 'Active';
+      let statusBadgeClass = 'badge-approved';
+      if (userStatus.toLowerCase() === 'pending') {
+        statusBadgeClass = 'badge-pending';
+      } else if (userStatus.toLowerCase() === 'suspended') {
+        statusBadgeClass = 'badge-rejected';
+      }
+
+      const content = `
+        <div style="text-align: center; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color);">
+          <div style="width: 76px; height: 76px; border-radius: 50%; margin: 0 auto 12px; overflow: hidden; background: var(--border-light); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; font-weight: 700; color: var(--text-secondary); border: 2px solid var(--accent-light);">
+            ${avatarSrc ? `<img src="${avatarSrc}" alt="" style="width: 100%; height: 100%; object-fit: cover;">` : (user.fullName || user.username || 'U').charAt(0).toUpperCase()}
+          </div>
+          <h3 style="margin: 0 0 4px 0; font-size: 1.25rem;">${escapeHtml(user.fullName || 'No Name')}</h3>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">${escapeHtml(user.username)}</div>
+          <div style="margin-top: 8px; display: flex; justify-content: center; gap: 8px; align-items: center;">
+            <span class="badge ${badgeClass}">${roleLabel}</span>
+            <span class="badge ${statusBadgeClass}">${escapeHtml(userStatus)}</span>
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-dark);">${formattedId}</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 0.9rem;">
+          <div style="background: var(--bg-app); padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Email Address</div>
+            <div style="word-break: break-all; font-weight: 500;">${escapeHtml(user.email || '-')}</div>
+          </div>
+          <div style="background: var(--bg-app); padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Phone Number</div>
+            <div style="font-weight: 500;">${escapeHtml(user.phone || '-')}</div>
+          </div>
+          <div style="background: var(--bg-app); padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); grid-column: span 2;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">
+              ${role === 'AGENT' ? 'Agency Affiliation / Office' : 'Address'}
+            </div>
+            <div style="font-weight: 500;">${escapeHtml(user.address || (role === 'AGENT' ? 'Independent Realtor' : 'Not provided'))}</div>
+          </div>
+          ${role === 'AGENT' ? `
+          <div style="background: var(--bg-app); padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); grid-column: span 2;">
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Active Listings</div>
+            <div style="font-weight: 700; color: var(--accent-dark);">${user.propertyCount || 0} Listed Properties</div>
+          </div>
+          ` : ''}
+        </div>
+      `;
+
+      document.getElementById('viewUserContent').innerHTML = content;
+      document.getElementById('viewUserEditBtn').onclick = () => {
+        closeModal('viewUserModal');
+        openEditModal(username);
+      };
+
+      openModal('viewUserModal');
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
